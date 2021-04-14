@@ -9,6 +9,8 @@ class PlanEstudio extends Model
 {
     use HasFactory;
 
+    protected $guarded=[];
+
     public function cursos(){
         return $this->hasMany(Curso::class);
     }

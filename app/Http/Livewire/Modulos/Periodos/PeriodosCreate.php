@@ -25,6 +25,8 @@ class PeriodosCreate extends Component
 
         $this->reset('open','nombre');
         $this->emit('render');
+
+        $this->emit('create');
     }
 
 

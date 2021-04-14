@@ -1,17 +1,17 @@
 @extends('adminlte::page')
 
-@section('title', 'Ciclos')
+@section('title', 'Plan Estudios')
 
 @section('content_header')
 
     {{-- Cargamos los Stylos de Tailwind --}}
     
-    <h1>Lista Ciclos</h1>
+    <h1>Lista Plan Estudios</h1>
 @stop
 
 @section('content')   
 
-        @livewire('modulos.ciclos.ciclos-index')
+    @livewire('modulos.plan-estudios.plan-estudios-index')
 
 @stop
 
@@ -31,5 +31,7 @@
 
 @section('js')
         <script src="{{ mix('js/app.js') }}"></script>
+        
         @include('unis.modulos.alertas.alertas')
+
 @stop

@@ -85,9 +85,9 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
-    'layout_fixed_footer' => null,
+    'layout_fixed_footer' => null, 
 
     /*
     |--------------------------------------------------------------------------
@@ -260,6 +260,16 @@ return [
             'route'  => 'unis.grupos',
             'icon' => 'nav-icon fas fa-fw fa-lock',
         ],
+        [
+            'text' => 'Plan Estudios',
+            'route'  => 'unis.planestudios',
+            'icon' => 'nav-icon fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Personas',
+            'route'  => 'unis.personas',
+            'icon' => 'nav-icon fas fa-fw fa-lock',
+        ],
     ],
 
     /*
@@ -343,11 +353,11 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
                 ],
             ],

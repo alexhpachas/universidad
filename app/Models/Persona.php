@@ -9,6 +9,8 @@ class Persona extends Model
 {
     use HasFactory;
 
+    protected $guarded=[];
+
     public function users(){
         return $this->hasOne(User::class);
     }

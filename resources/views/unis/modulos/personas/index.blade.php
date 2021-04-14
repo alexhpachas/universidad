@@ -1,17 +1,17 @@
 @extends('adminlte::page')
 
-@section('title', 'Ciclos')
+@section('title', 'Personas')
 
 @section('content_header')
 
     {{-- Cargamos los Stylos de Tailwind --}}
     
-    <h1>Lista Ciclos</h1>
+    <h1>Lista Personas</h1>
 @stop
 
 @section('content')   
 
-        @livewire('modulos.ciclos.ciclos-index')
+    @livewire('modulos.personas.personas-index')
 
 @stop
 
