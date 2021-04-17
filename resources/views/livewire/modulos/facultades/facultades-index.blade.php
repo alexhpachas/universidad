@@ -8,14 +8,14 @@
             <div class="px-6 py-4 flex items-center border border-gray-200 shadow-lg">
 
                 {{-- BUSCADOR GENERAL -> COMPONENTE REUTILIZABLE --}}
-                <x-buscadortabla.buscador :type="$type='Grupos'" />
+                <x-buscadortabla.buscador :type="$type='Facultades'" />
 
                 {{-- BOTON CREAR NUEVA ENTIDAD --}}
-                @livewire('modulos.grupos.grupos-create')                   
+                @livewire('modulos.facultades.facultades-create')                   
             </div>
             
             {{-- SI HAY AL MENOS UN REGISTRO DIBUJAMOS LA TABLA --}}
-            @if ($grupos->count())
+            @if ($facultades->count())
                             
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-200">
@@ -47,23 +47,59 @@
                                 @endif
                             @endif
                         </th>
+                        <th wire:click="order('codigo')" scope="col"
+                            class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Codigo
+                            @if ($this->campo !='codigo').
+                                <i class="float-right fas fa-sort mt-1"></i>                                
+                            @else
+                                @if ($this->direccion=='asc')
+                                    <i class="float-right fas fa-sort-up mt-1"></i>
+                                @else
+                                    <i class="float-right fas fa-sort-down mt-1"></i> 
+                                @endif
+                            @endif
+                        </th>
+                        <th wire:click="order('abreviatura')" scope="col"
+                            class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Abreviatura
+                            @if ($this->campo !='abreviatura').
+                                <i class="float-right fas fa-sort mt-1"></i>                                
+                            @else
+                                @if ($this->direccion=='asc')
+                                    <i class="float-right fas fa-sort-up mt-1"></i>
+                                @else
+                                    <i class="float-right fas fa-sort-down mt-1"></i> 
+                                @endif
+                            @endif
+                        </th>
                         <th scope="col" class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Acciones
                         </th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($grupos as $grupo)
+                    @foreach ($facultades as $facultade)
 
                         <tr>
                             <td class="px-6 py-4 ">
                                 <div class="text-sm font-medium text-gray-900">
-                                    {{ $grupo->id }}
+                                    {{ $facultade->id }}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    {{ $grupo->nombre }}
+                                    {{ $facultade->nombre }}
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    {{ $facultade->codigo }}
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    {{ $facultade->abreviatura }}
                                 </div>
                             </td>
                     
@@ -80,7 +116,7 @@
                                     {{-- BOTON EDITAR --}}
                                     <div>
 
-                                        @livewire('modulos.grupos.grupos-update', ['grupo' => $grupo], key($grupo->id))
+                                        {{-- @livewire('modulos.grupos.grupos-update', ['grupo' => $grupo], key($grupo->id)) --}}
                                         
                                     </div>
                                                                     
@@ -100,7 +136,7 @@
                 
             </table>
             <div>                
-                {{$grupos->links()}}
+                {{$facultades->links()}}
             </div>
             @else
                 <div class="px-6 py-4">

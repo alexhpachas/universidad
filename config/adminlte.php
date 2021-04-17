@@ -270,6 +270,11 @@ return [
             'route'  => 'unis.personas',
             'icon' => 'nav-icon fas fa-fw fa-lock',
         ],
+        [
+            'text' => 'Facultades',
+            'route'  => 'unis.facultades',
+            'icon' => 'nav-icon fas fa-fw fa-lock',
+        ],
     ],
 
     /*

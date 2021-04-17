@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Facultade extends Model
 {
     use HasFactory;
+    
+    protected $guarded=[];
 
     //RELACIONES NIVEL MODELOS
 

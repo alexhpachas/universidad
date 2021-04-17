@@ -11,9 +11,20 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+    <style>
+        .jetstream-modal{
+            z-index: 9999;
+        }
+
+    </style>
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    
+    <script src="{{ mix('js/app.js') }}"></script>
+
+    @include('unis.modulos.alertas.alertas')
 @stop
