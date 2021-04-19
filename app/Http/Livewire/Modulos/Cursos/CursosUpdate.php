@@ -2,10 +2,8 @@
 
 namespace App\Http\Livewire\Modulos\Cursos;
 
-use App\Models\Ciclo;
 use App\Models\Curso;
-use App\Models\PlanEstudio;
-use App\Models\Programa;
+
 use Livewire\Component;
 
 class CursosUpdate extends Component

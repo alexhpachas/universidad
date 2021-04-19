@@ -11,7 +11,7 @@
                 <x-buscadortabla.buscador :type="$type='Entidades'" />
 
                 {{-- BOTON CREAR NUEVA ENTIDAD --}}
-                @livewire('entidades.entidade-create')                   
+                @livewire('modulos.entidades.entidade-create')                   
             </div>
             
             {{-- SI HAY AL MENOS UN REGISTRO DIBUJAMOS LA TABLA --}}

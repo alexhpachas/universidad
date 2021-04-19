@@ -11,7 +11,7 @@
 
 @section('content')   
 
-        @livewire('entidades.entidade-index')
+        @livewire('modulos.entidades.entidade-index')
 
 @stop
 
