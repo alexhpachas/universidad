@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Modulos\Entidades;
 use App\Models\Entidade;
 use Livewire\Component;
 
-class EntidadeCreate extends Component
+class EntidadesCreate extends Component
 {
     public $open = false;
     public $nombre;
@@ -26,8 +26,9 @@ class EntidadeCreate extends Component
         $this->emit('render');
     }
 
+
     public function render()
     {
-        return view('livewire.modulos.entidades.entidade-create');
+        return view('livewire.modulos.entidades.entidades-create');
     }
 }

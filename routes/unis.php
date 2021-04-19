@@ -11,6 +11,7 @@ use App\Http\Livewire\Modulos\Cursoplanes\CursoPlanesIndex;
 use App\Http\Livewire\Modulos\Cursoplanes\PlanCursosIndex;
 use App\Http\Livewire\Modulos\Cursos\CursosIndex;
 use App\Http\Livewire\Modulos\Entidades\EntidadeIndex;
+use App\Http\Livewire\Modulos\Entidades\EntidadesIndex;
 use App\Http\Livewire\Modulos\Facultades\FacultadesIndex;
 use App\Http\Livewire\Modulos\Grupos\GruposIndex;
 use App\Http\Livewire\Modulos\Periodos\PeriodosIndex;
@@ -21,7 +22,7 @@ use App\Models\Programa;
 
 Route::get('',[HomeController::class,'index'])->name('unis.home');
 
-Route::get('entidades',[EntidadeIndex::class,'index'])->name('unis.entidades');
+Route::get('entidades',[EntidadesIndex::class,'index'])->name('unis.entidades');
 
 Route::get('ciclos',[CiclosIndex::class,'index'])->name('unis.ciclos');
 

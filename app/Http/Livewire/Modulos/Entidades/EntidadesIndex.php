@@ -4,10 +4,9 @@ namespace App\Http\Livewire\Modulos\Entidades;
 
 use App\Models\Entidade;
 use Livewire\Component;
-
 use Livewire\WithPagination;
 
-class EntidadeIndex extends Component
+class EntidadesIndex extends Component
 {
     use WithPagination;
     
@@ -21,14 +20,14 @@ class EntidadeIndex extends Component
         $this->resetPage();
     }
 
-    public function render(){
+    public function render()
+    {
         $entidades = Entidade::where('estado','2')
                              ->where('nombre','like','%'.$this->buscador.'%')
                              ->orderBy($this->campo,$this->direccion)
                              ->paginate(10);
-        return view('livewire.modulos.entidades.entidade-index',compact('entidades'));
+        return view('livewire.modulos.entidades.entidades-index',compact('entidades'));
     }
-
 
     public function order($campo){
         if($this->campo==$campo){                        
