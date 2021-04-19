@@ -47,7 +47,7 @@ class EntidadeIndex extends Component
     }
 
     public function index(){
-        return view('unis.modulos.entidades.index');
+        return view('unis.entidades.index');
     }
 
     public function show($id){
