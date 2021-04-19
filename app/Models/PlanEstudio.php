@@ -11,7 +11,11 @@ class PlanEstudio extends Model
 
     protected $guarded=[];
 
-    public function cursos(){
-        return $this->hasMany(Curso::class);
+    public function cursoPlane(){
+        return $this->hasMany(CursoPlane::class);
+    }
+
+    public function programa(){
+        return $this->belongsTo(Programa::class);
     }
 }

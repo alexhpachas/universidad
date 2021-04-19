@@ -18,7 +18,8 @@ class CreateFacultadesTable extends Migration
             $table->string('nombre')->unique();
             $table->string('codigo')->unique();
             $table->string('abreviatura');
-            $table->enum('estado',[1,2])->default(1);
+            $table->enum('estado',[1,2])->default(2);
+
             $table->unsignedBigInteger('entidade_id');
             $table->foreign('entidade_id')->references('id')->on('entidades')->onUpdate('cascade');            
             $table->timestamps();

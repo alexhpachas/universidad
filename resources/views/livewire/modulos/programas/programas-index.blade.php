@@ -102,14 +102,14 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    {{ $programa->nombre }}
+                                    {{ $programa->codigo }}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    {{ $programa->codigo }}
+                                    {{ $programa->nombre }}
                                 </div>
-                            </td>
+                            </td>                            
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
                                     {{ $programa->abreviatura }}

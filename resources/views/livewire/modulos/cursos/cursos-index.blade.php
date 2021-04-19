@@ -112,45 +112,7 @@
                                 @endif
                             @endif
                         </th>
-                        <th wire:click="order('programa')" scope="col"
-                            class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Programa
-                            @if ($this->campo !='programa')
-                                <i class="float-right fas fa-sort mt-1"></i>                                
-                            @else
-                                @if ($this->direccion=='asc')
-                                    <i class="float-right fas fa-sort-up mt-1"></i>
-                                @else
-                                    <i class="float-right fas fa-sort-down mt-1"></i> 
-                                @endif
-                            @endif
-                        </th>
-                        <th wire:click="order('plan_estudio')" scope="col"
-                            class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Plan Estudio
-                            @if ($this->campo !='plan_estudio')
-                                <i class="float-right fas fa-sort mt-1"></i>                                
-                            @else
-                                @if ($this->direccion=='asc')
-                                    <i class="float-right fas fa-sort-up mt-1"></i>
-                                @else
-                                    <i class="float-right fas fa-sort-down mt-1"></i> 
-                                @endif
-                            @endif
-                        </th>
-                        <th wire:click="order('ciclo')" scope="col"
-                            class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Ciclo
-                            @if ($this->campo !='ciclo')
-                                <i class="float-right fas fa-sort mt-1"></i>                                
-                            @else
-                                @if ($this->direccion=='asc')
-                                    <i class="float-right fas fa-sort-up mt-1"></i>
-                                @else
-                                    <i class="float-right fas fa-sort-down mt-1"></i> 
-                                @endif
-                            @endif
-                        </th>
+                                                
                         <th scope="col" class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Acciones
                         </th>
@@ -194,22 +156,7 @@
                                 <div class="text-sm text-gray-900">
                                     {{ $curso->tipo }}
                                 </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900">
-                                    {{ $curso->programa->nombre }}
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900">
-                                    {{ $curso->planEstudio->codigo }}
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900">
-                                    {{ $curso->ciclo->nombre }}
-                                </div>
-                            </td>
+                            </td>                            
                             
                           
                             <td class="px-6 py-4">

@@ -9,7 +9,7 @@ class PreRequisito extends Model
 {
     use HasFactory;
 
-    public function cursos(){
-        return $this->hasOne(Curso::class);
+    public function cursoPlane(){
+        return $this->hasOne(CursoPlane::class);
     }
 }

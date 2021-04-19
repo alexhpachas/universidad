@@ -285,7 +285,11 @@ return [
             'route'  => 'unis.personas',
             'icon' => 'nav-icon fas fa-fw fa-lock',
         ],
-        
+        [
+            'text' => 'Planes',
+            'route'  => 'unis.cursoplanes',
+            'icon' => 'nav-icon fas fa-fw fa-lock',
+        ],
     ],
 
     /*

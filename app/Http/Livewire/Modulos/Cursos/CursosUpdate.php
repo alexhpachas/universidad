@@ -19,10 +19,7 @@ class CursosUpdate extends Component
         'curso.horas_teoricas'=>'required',
         'curso.horas_practicas'=>'required',
         'curso.creditos'=>'required',
-        'curso.tipo'=>'required',
-        'curso.programa_id'=>'required',
-        'curso.plan_estudio_id'=>'required',
-        'curso.ciclo_id'=>'required',
+        'curso.tipo'=>'required',        
     ];
 
     public function mount(Curso $curso){
@@ -39,10 +36,7 @@ class CursosUpdate extends Component
     }
 
     public function render()
-    {        
-        $programas = Programa::where('estado','2')->get();
-        $planEstudios = PlanEstudio::where('estado','2')->get();
-        $ciclos=Ciclo::all();
-        return view('livewire.modulos.cursos.cursos-update',compact('programas','planEstudios','ciclos'));
+    {            
+        return view('livewire.modulos.cursos.cursos-update');
     }
 }

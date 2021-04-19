@@ -47,13 +47,22 @@
             </div>
 
             <div class="mb-1">
+                <x-jet-label value="Seleccione Tipo" />
+
+                <select wire:model="curso.tipo" class="form-control">
+                    <option value="OBLIGATORIO">OBLIGATORIO</option>
+                    <option value="ELECTIVO">ELECTIVO</option>
+                </select>
+            </div>
+
+            {{-- <div class="mb-1">
                 <x-jet-label value="Tipo del curso" />
                 <x-jet-input wire:model="curso.tipo" type="text" class="form-control" placeholder="Ingrese credito del curso" />                
 
                 <x-jet-input-error for="curso.tipo" />
-            </div>
+            </div> --}}
 
-            <div class="mb-1">
+            {{-- <div class="mb-1">
                 <x-jet-label value="Seleccione Programa del curso" />
 
                 <select wire:model="curso.programa_id" class="form-control">
@@ -88,7 +97,7 @@
                 </select>
 
                 <x-jet-input-error for="curso.ciclo_id" />
-            </div>
+            </div> --}}
         </x-slot>
 
         <x-slot name="footer">

@@ -9,8 +9,8 @@ class CursoGrupo extends Model
 {
     use HasFactory;
 
-    public function cursos(){
-        return $this->belongsTo(Curso::class);
+    public function cursoPlane(){
+        return $this->belongsTo(CursoPlane::class);
     }
 
     public function periodos(){

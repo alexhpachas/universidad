@@ -27,14 +27,14 @@
 
             <div class="mb-1">
                 <x-jet-label value="Horas Teoricas" />
-                <x-jet-input wire:model.defer="horas_teoricas" type="text" class="form-control" placeholder="Ingrese horas Teoricas del curso" />                
+                <x-jet-input wire:model.defer="horas_teoricas" type="number" class="form-control" placeholder="Ingrese horas Teoricas del curso" />                
                 
                 <x-jet-input-error for="horas_teoricas" />
             </div>
 
             <div class="mb-1">
                 <x-jet-label value="Horas Practicas" />
-                <x-jet-input wire:model.defer="horas_practicas" type="text" class="form-control" placeholder="Ingrese horas practicas del curso" />                
+                <x-jet-input wire:model.defer="horas_practicas" type="number" class="form-control" placeholder="Ingrese horas practicas del curso" />                
                 
                 <x-jet-input-error for="horas_practicas" />
             </div>
@@ -45,15 +45,23 @@
 
                 <x-jet-input-error for="creditos" />
             </div>
-
+{{-- 
             <div class="mb-1">
                 <x-jet-label value="Tipo del curso" />
                 <x-jet-input wire:model.defer="tipo" type="text" class="form-control" placeholder="Ingrese credito del curso" />                
 
                 <x-jet-input-error for="tipo" />
+            </div> --}}
+            <div class="mb-1">
+                <x-jet-label value="Seleccione Tipo" />
+                <select wire:model.defer="tipo" class="form-control" >
+                    <option>=======SELECCIONE TIPO=======</option>
+                    <option value="OBLIGATORIO">OBLIGATORIO</option>
+                    <option value="ELECTIVO">ELECTIVO</option>
+                </select>
             </div>
 
-            <div class="mb-1">
+            {{-- <div class="mb-1">
                 <x-jet-label value="Seleccione Programa del curso" />
 
                 <select wire:model.defer="programa_id" class="form-control">
@@ -88,7 +96,7 @@
                 </select>
 
                 <x-jet-input-error for="ciclo_id" />
-            </div>
+            </div> --}}
         </x-slot>
 
         <x-slot name="footer">

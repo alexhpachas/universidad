@@ -11,7 +11,7 @@ class Ciclo extends Model
 
     protected $guarded=[];
 
-    public function cursos(){
-        return $this->hasMany(Curso::class);
+    public function cursoPlane(){
+        return $this->hasMany(CursoPlane::class);
     }
 }

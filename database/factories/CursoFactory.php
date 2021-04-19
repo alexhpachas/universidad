@@ -25,15 +25,12 @@ class CursoFactory extends Factory
     public function definition()
     {
         return [
-            'codigo'=>$this->faker->unique()->word(20),
-            'nombre'=>$this->faker->sentence(),
+            'codigo'=>$this->faker->unique()->word(5),
+            'nombre'=>$this->faker->unique()->word(8),
             'horas_teoricas'=>$this->faker->randomElement([1,2,3,4,5,6,7,8,9]),
             'horas_practicas'=>$this->faker->randomElement([1,2,3,4,5,6,7,8,9]),
             'creditos'=>$this->faker->randomElement([1,2,3,4,5,6,7,8,9]),
-            'tipo'=>$this->faker->sentence(),
-            'programa_id'=>Programa::all()->random()->id,
-            'plan_estudio_id'=>PlanEstudio::all()->random()->id,
-            'ciclo_id'=>Ciclo::all()->random()->id
+            'tipo'=>$this->faker->randomElement(['OBLIGATORIO','ELECTIVO'])           
         ];
     }
 }

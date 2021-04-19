@@ -22,13 +22,6 @@ class CreateCursosTable extends Migration
             $table->integer('creditos');
             $table->string('tipo');
 
-            $table->unsignedBigInteger('programa_id');
-            $table->unsignedBigInteger('plan_estudio_id');
-            $table->unsignedBigInteger('ciclo_id');
-
-            $table->foreign('programa_id')->references('id')->on('programas')->onUpdate('cascade');
-            $table->foreign('plan_estudio_id')->references('id')->on('plan_estudios')->onUpdate('cascade');
-            $table->foreign('ciclo_id')->references('id')->on('ciclos')->onUpdate('cascade');
             $table->timestamps();
         });
     }

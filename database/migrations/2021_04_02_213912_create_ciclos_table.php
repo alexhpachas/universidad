@@ -15,7 +15,8 @@ class CreateCiclosTable extends Migration
     {
         Schema::create('ciclos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->integer('nombre');
+            $table->integer('estado')->default(2);
             $table->timestamps();
         });
     }

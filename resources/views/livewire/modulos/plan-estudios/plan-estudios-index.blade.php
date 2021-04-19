@@ -23,7 +23,7 @@
                         <th wire:click="order('id')" scope="col"
                             class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             ID
-                            @if ($this->campo !='id').
+                            @if ($this->campo !='id')
                                 <i class="float-right fas fa-sort mt-1"></i>                                
                             @else
                                 @if ($this->direccion=='asc')
@@ -34,10 +34,23 @@
                             @endif
                             
                         </th>
-                        <th wire:click="order('nombre')" scope="col"
+                        <th wire:click="order('codigo')" scope="col"
                             class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Nombre
-                            @if ($this->campo !='nombre').
+                            @if ($this->campo !='codigo')
+                                <i class="float-right fas fa-sort mt-1"></i>                                
+                            @else
+                                @if ($this->direccion=='asc')
+                                    <i class="float-right fas fa-sort-up mt-1"></i>
+                                @else
+                                    <i class="float-right fas fa-sort-down mt-1"></i> 
+                                @endif
+                            @endif
+                        </th>
+                        <th wire:click="order('programa_id')" scope="col"
+                            class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Programa
+                            @if ($this->campo !='programa_id')
                                 <i class="float-right fas fa-sort mt-1"></i>                                
                             @else
                                 @if ($this->direccion=='asc')
@@ -64,6 +77,11 @@
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
                                     {{ $planEstudio->codigo }}
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    {{ $planEstudio->programa->nombre }}
                                 </div>
                             </td>
                     

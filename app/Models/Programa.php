@@ -15,7 +15,7 @@ class Programa extends Model
         return $this->belongsTo(Facultade::class);
     }
 
-    public function cursos(){
-        return $this->hasMany(Curso::class);
+    public function planEstudio(){
+        return $this->hasMany(planEstudio::class);
     }
 }

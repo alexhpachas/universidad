@@ -89,14 +89,14 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    {{ $facultade->nombre }}
+                                    {{ $facultade->codigo }}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    {{ $facultade->codigo }}
+                                    {{ $facultade->nombre }}
                                 </div>
-                            </td>
+                            </td>                            
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
                                     {{ $facultade->abreviatura }}
