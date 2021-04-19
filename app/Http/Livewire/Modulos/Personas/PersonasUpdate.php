@@ -11,8 +11,8 @@ class PersonasUpdate extends Component
     public $persona;
 
     protected $rules=[
-        'persona.nombres'=>'required|max:10',
-        'persona.apellidos'=>'required|max:30',
+        'persona.nombres'=>'required',
+        'persona.apellidos'=>'required',
         'persona.dni'=>'required|max:8|min:8|regex:/^[0-9]+$/i',
         'persona.fecha_nacimiento'=>'required',
         'persona.email'=>'required',

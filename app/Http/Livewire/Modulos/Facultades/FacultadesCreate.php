@@ -14,9 +14,11 @@ class FacultadesCreate extends Component
     public $abreviatura;
     public $entidade_id=1;
 
+    protected $listener=['render'];
+
     protected $rules=([
-        'nombre'=>'required|max:10|unique:facultades',
-        'codigo'=>'required|min:2|unique:facultades',
+        'nombre'=>'required|unique:facultades',
+        'codigo'=>'required|unique:facultades',
         'abreviatura'=>'required',
         'entidade_id'=>'required',
     ]);

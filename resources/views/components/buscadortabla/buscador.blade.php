@@ -2,11 +2,12 @@
 
 
 <div class="flex-1 mr-4">
+    {{-- <input wire:model="buscador" type="text" class="form-control" placeholder="Buscar {{$type}}"> --}}
     <x-jet-input 
+    wire:model="buscador"
     type="text" 
     class="form-control" 
     placeholder="Buscar {{$type}}" 
-    wire:model="buscador">
-
+    >
     </x-jet-input> 
 </div> 

@@ -7,25 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curso extends Model
 {
+    protected $guarded=[];
     use HasFactory;
 
-    public function programas(){
+    public function programa(){
         return $this->belongsTo(Programa::class);
     }
 
-    public function planEstudios(){
+    public function planEstudio(){
         return $this->belongsTo(planEstudio::class);
     }
 
-    public function ciclos(){
+    public function ciclo(){
         return $this->belongsTo(Ciclo::class);
     }
 
-    public function preRequisitos(){
+    public function preRequisito(){
         return $this->belongsTo(PreRequisito::class);
     }
 
-    public function cursoGrupos(){
+    public function cursoGrupo(){
         return $this->hasMany(CursoGrupo::class);
     }
 }

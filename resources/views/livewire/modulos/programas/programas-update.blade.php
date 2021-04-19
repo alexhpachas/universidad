@@ -6,44 +6,44 @@
     <x-jet-dialog-modal wire:model="open">
         <x-slot name="title">
             <div class="text-center border-gray-700 border-b-2">
-                ACTUALIZAR FACULTADES
+                ACTUALIZAR PROGRAMA
             </div>
 
         </x-slot>
 
         <x-slot name="content">
             <div class="mb-4">
-                <x-jet-label value="Nombre de la Facultad" />
-                <x-jet-input wire:model="facultade.nombre" type="text" class="form-control" placeholder="Ingrese nombre de la facultad" />
+                <x-jet-label value="Nombre del programa" />
+                <x-jet-input wire:model="programa.nombre" type="text" class="form-control" placeholder="Ingrese nombre de la facultad" />
 
-                <x-jet-input-error for="facultade.nombre" />
+                <x-jet-input-error for="programa.nombre" />
             </div>
 
             <div class="mb-4">
-                <x-jet-label value="Codigo" />
-                <x-jet-input wire:model="facultade.codigo" type="text" class="form-control" placeholder="Ingrese codigo de la facultad" />
+                <x-jet-label value="Codigo del programa" />
+                <x-jet-input wire:model="programa.codigo" type="text" class="form-control" placeholder="Ingrese codigo de la facultad" />
 
-                <x-jet-input-error for="facultade.codigo" />
+                <x-jet-input-error for="programa.codigo" />
 
             </div>
 
             <div class="mb-4">
-                <x-jet-label value="Abreviatura de la facultad" />
-                <x-jet-input wire:model="facultade.abreviatura" type="text" class="form-control" placeholder="Ingrese abreviatura de la facultad" />
+                <x-jet-label value="Abreviatura del programa" />
+                <x-jet-input wire:model="programa.abreviatura" type="text" class="form-control" placeholder="Ingrese abreviatura de la facultad" />
 
-                <x-jet-input-error for="facultade.abreviatura" /> 
+                <x-jet-input-error for="programa.abreviatura" /> 
             </div>
 
             <div class="mb-4">
-                <x-jet-label value="Seleccione Entidad" />
-                <select wire:model="facultade.entidade_id" class="form-control">
+                <x-jet-label value="Seleccione Facultad" />
+                <select wire:model="programa.facultade_id" class="form-control">
                         
-                    @foreach ($entidades as $entidade)
-                        <option value="{{$entidade->id}}">{{$entidade->nombre}}</option>
+                    @foreach ($facultades as $facultade)
+                        <option value="{{$facultade->id}}">{{$facultade->nombre}}</option>
                     @endforeach
                 </select>
 
-                <x-jet-input-error for="facultade.entidade_id" />
+                <x-jet-input-error for="programa.facultade_id" />
             </div>
             
         </x-slot>

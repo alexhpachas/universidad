@@ -11,7 +11,7 @@ class EntidadeCreate extends Component
     public $nombre;
 
     protected $rules=([
-        'nombre'=>'required|max:10|unique:entidades'
+        'nombre'=>'required|unique:entidades'
     ]);
 
     public function guardar(){

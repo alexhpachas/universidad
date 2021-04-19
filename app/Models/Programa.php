@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Programa extends Model
 {
+    protected $guarded=[];
     use HasFactory;
 
-    public function facultades(){
+    public function facultade(){        
         return $this->belongsTo(Facultade::class);
     }
 

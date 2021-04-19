@@ -41,7 +41,7 @@
             <div class="mb-4">
                 <x-jet-label value="Entidad :" />
                 
-                <select wire:model="entidade_id" class="form-control">
+                <select wire:model="entidade_id" class="form-control">                        
                     @foreach ($entidades as $entidade)
                         <option value="{{$entidade->id}}">{{$entidade->nombre}}</option>
                     @endforeach

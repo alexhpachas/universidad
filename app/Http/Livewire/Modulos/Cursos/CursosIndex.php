@@ -1,26 +1,24 @@
 <?php
 
-namespace App\Http\Livewire\Modulos\Facultades;
+namespace App\Http\Livewire\Modulos\Cursos;
 
-use App\Models\Facultade;
+use App\Models\Curso;
 use Livewire\Component;
 
-class FacultadesIndex extends Component
+class CursosIndex extends Component
 {
-    public $buscador;
+    public $buscador="";
     public $campo="id";
     public $direccion="desc";
 
     protected $listeners=['render'];
-
+    
     public function render()
     {
-        $facultades=Facultade::where('estado','2')
-                             ->where('nombre','like','%'.$this->buscador.'%')
-                             ->orderBy($this->campo,$this->direccion)
-                             ->latest('id')
-                             ->paginate(10);
-        return view('livewire.modulos.facultades.facultades-index',compact('facultades'));
+        $cursos = Curso::where('nombre','like','%'.$this->buscador.'%')
+                       ->orderBy($this->campo,$this->direccion)
+                       ->paginate(10);
+        return view('livewire.modulos.cursos.cursos-index',compact('cursos'));
     }
 
     public function order($campo){
@@ -38,6 +36,6 @@ class FacultadesIndex extends Component
     }
 
     public function index(){
-        return view('unis.modulos.facultades.index');
+        return view('unis.modulos.cursos.index');
     }
 }

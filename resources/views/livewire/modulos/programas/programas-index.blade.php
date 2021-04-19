@@ -8,14 +8,14 @@
             <div class="px-6 py-4 flex items-center border border-gray-200 shadow-lg">
 
                 {{-- BUSCADOR GENERAL -> COMPONENTE REUTILIZABLE --}}
-                <x-buscadortabla.buscador :type="$type='Facultades'" />
+                <x-buscadortabla.buscador :type="$type='Programas'" />                
 
                 {{-- BOTON CREAR NUEVA ENTIDAD --}}
-                @livewire('modulos.facultades.facultades-create')                   
+                @livewire('modulos.programas.programas-create')                   
             </div>
-            
+            {{$buscador}}
             {{-- SI HAY AL MENOS UN REGISTRO DIBUJAMOS LA TABLA --}}
-            @if ($facultades->count())
+            @if ($programas->count())
                             
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-200">
@@ -73,33 +73,51 @@
                                 @endif
                             @endif
                         </th>
+                        <th wire:click="order('facultade_id')" scope="col"
+                            class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Facultad
+                            @if ($this->campo !='facultade_id').
+                                <i class="float-right fas fa-sort mt-1"></i>                                
+                            @else
+                                @if ($this->direccion=='asc')
+                                    <i class="float-right fas fa-sort-up mt-1"></i>
+                                @else
+                                    <i class="float-right fas fa-sort-down mt-1"></i> 
+                                @endif
+                            @endif
+                        </th>
                         <th scope="col" class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Acciones
                         </th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($facultades as $facultade)
+                    @foreach ($programas as $programa)
 
                         <tr>
                             <td class="px-6 py-4 ">
                                 <div class="text-sm font-medium text-gray-900">
-                                    {{ $facultade->id }}
+                                    {{ $programa->id }}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    {{ $facultade->nombre }}
+                                    {{ $programa->nombre }}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    {{ $facultade->codigo }}
+                                    {{ $programa->codigo }}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    {{ $facultade->abreviatura }}
+                                    {{ $programa->abreviatura }}
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    {{ $programa->facultade->nombre }}
                                 </div>
                             </td>
                     
@@ -116,7 +134,7 @@
                                     {{-- BOTON EDITAR --}}
                                     <div>
 
-                                        @livewire('modulos.facultades.facultades-update', ['facultade' => $facultade], key($facultade->id))
+                                        @livewire('modulos.programas.programas-update', ['programa' => $programa], key($programa->id))                                        
                                         
                                     </div>
                                                                     
@@ -136,7 +154,7 @@
                 
             </table>
             <div>                
-                {{$facultades->links()}}
+                {{$programas->links()}}
             </div>
             @else
                 <div class="px-6 py-4">

@@ -246,18 +246,13 @@ return [
             'icon' => 'nav-icon fas fa-user',
         ],
         [
-            'text' => 'Ciclos',
-            'route'  => 'unis.ciclos',
+            'text' => 'Facultades',
+            'route'  => 'unis.facultades',
             'icon' => 'nav-icon fas fa-fw fa-lock',
         ],
         [
-            'text' => 'Periodos',
-            'route'  => 'unis.periodos',
-            'icon' => 'nav-icon fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Grupos',
-            'route'  => 'unis.grupos',
+            'text' => 'Programas',
+            'route'  => 'unis.programas',
             'icon' => 'nav-icon fas fa-fw fa-lock',
         ],
         [
@@ -266,15 +261,31 @@ return [
             'icon' => 'nav-icon fas fa-fw fa-lock',
         ],
         [
+            'text' => 'Cursos',
+            'route'  => 'unis.cursos',
+            'icon' => 'nav-icon fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Periodos',
+            'route'  => 'unis.periodos',
+            'icon' => 'nav-icon fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Ciclos',
+            'route'  => 'unis.ciclos',
+            'icon' => 'nav-icon fas fa-fw fa-lock',
+        ],        
+        [
+            'text' => 'Grupos',
+            'route'  => 'unis.grupos',
+            'icon' => 'nav-icon fas fa-fw fa-lock',
+        ],        
+        [
             'text' => 'Personas',
             'route'  => 'unis.personas',
             'icon' => 'nav-icon fas fa-fw fa-lock',
         ],
-        [
-            'text' => 'Facultades',
-            'route'  => 'unis.facultades',
-            'icon' => 'nav-icon fas fa-fw fa-lock',
-        ],
+        
     ],
 
     /*

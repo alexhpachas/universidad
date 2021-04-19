@@ -24,7 +24,7 @@
 
         <x-slot name="footer">
             <div>
-                <x-jet-danger-button wire:click="actualizar">
+                <x-jet-danger-button wire:click="actualizar" wire:loading.attr="disabled" class="disabled:opacity-25">
                     ACTUALIZAR
                 </x-jet-danger-button>
 
