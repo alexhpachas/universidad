@@ -20,7 +20,7 @@ class CreatePerfilesTable extends Migration
             $table->string('facebook')->nullable();
             $table->unsignedBigInteger('user_id');
 
-            $table->foreign('user_id')->references('id')->on('Users')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->timestamps();
         });
     }

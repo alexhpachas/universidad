@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Modulos\Cursoplanes;
+namespace App\Http\Livewire\Modulos\CursoPlanes;
 
 use Livewire\Component;
 
@@ -8,7 +8,7 @@ class CursoPlanesIndex extends Component
 {
     public function render()
     {
-        return view('livewire.modulos.cursoplanes.curso-planes-index');
+        return view('livewire.modulos.curso-planes.curso-planes-index');
     }
 
     public function index(){
