@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    
+    @livewire('component', ['user' => $user], key($user->id))
 @stop
 
 @section('css')
