@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    @livewire('component', ['user' => $user], key($user->id))
+    @livewire('modulos.curso-planes.curso-planes-index')
 @stop
 
 @section('css')
