@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Livewire\Entidades\EntidadeIndex;
+
 use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\unis\HomeController;
-/* use App\Http\Livewire\Ciclos\CicloIndex; */
+
 use App\Http\Livewire\Modulos\Ciclos\CiclosIndex;
 use App\Http\Livewire\Modulos\Cursoplanes\CursoPlanesIndex;
 use App\Http\Livewire\Modulos\Cursoplanes\PlanCursosIndex;
 use App\Http\Livewire\Modulos\Cursos\CursosIndex;
+use App\Http\Livewire\Modulos\Entidades\EntidadeIndex;
 use App\Http\Livewire\Modulos\Facultades\FacultadesIndex;
 use App\Http\Livewire\Modulos\Grupos\GruposIndex;
 use App\Http\Livewire\Modulos\Periodos\PeriodosIndex;
