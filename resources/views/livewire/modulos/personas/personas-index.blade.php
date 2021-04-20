@@ -17,7 +17,7 @@
             {{-- SI HAY AL MENOS UN REGISTRO DIBUJAMOS LA TABLA --}}
             @if ($personas->count())
                             
-            <table class="min-w-full divide-y divide-gray-200">
+            <table class="min-w-full divide-y divide-gray-200 uppercase">
                 <thead class="bg-gray-200">
                     <tr>
                         <th wire:click="order('id')" scope="col"

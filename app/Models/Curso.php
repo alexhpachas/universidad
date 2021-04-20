@@ -14,5 +14,9 @@ class Curso extends Model
         return $this->hasMany(CursoPlane::class);
     }
 
+    public function planEstudio(){
+        return $this->belongsToMany(PlanEstudio::class);
+    }
+
    
 }

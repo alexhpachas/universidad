@@ -18,4 +18,8 @@ class PlanEstudio extends Model
     public function programa(){
         return $this->belongsTo(Programa::class);
     }
+
+    public function curso(){
+        return $this->belongsToMany(Curso::class);
+    }
 }

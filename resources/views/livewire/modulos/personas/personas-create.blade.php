@@ -19,7 +19,7 @@
         <x-slot name="content">
             <div class="mb-1">
                 <x-jet-label value="Nombres :" />
-                <x-jet-input wire:model.defer="persona.nombres" class="form-control" type="text" value="{{ old('nombres') }}" placeholder="ejemplo: ALEX GABRIEL" />
+                <x-jet-input wire:model.defer="nombres" class="form-control" type="text" value="{{ old('nombres') }}" placeholder="ejemplo: ALEX GABRIEL" />
                 
                 <x-jet-input-error for="nombres" />
             </div>    
@@ -63,7 +63,7 @@
         {{-- PIE DE PAGINA DEL MODAL --}}
         <x-slot name="footer">
             <div>
-                <x-jet-danger-button wire:click="actualizar">
+                <x-jet-danger-button wire:click="guardar">
                     Crear Persona
                 </x-jet-danger-button>
 
