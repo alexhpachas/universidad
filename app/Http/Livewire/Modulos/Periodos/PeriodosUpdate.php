@@ -22,7 +22,7 @@ class PeriodosUpdate extends Component
         $this->validate();
         $this->periodo->save();
         $this->reset('open');
-        $this->emit('render');
+        $this->emitTo('modulos.periodos.periodos-index','render');
         $this->emit('update');
 
     }

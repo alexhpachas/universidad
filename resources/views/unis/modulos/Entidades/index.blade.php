@@ -31,4 +31,5 @@
 
 @section('js')
         <script src="{{ mix('js/app.js') }}"></script>
+        @include('unis.modulos.alertas.alertas')
 @stop

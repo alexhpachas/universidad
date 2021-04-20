@@ -209,7 +209,7 @@
                 
             </table>
             <div>                
-                {{-- {{$cursos->links()}} --}}
+                {{$cursos->links()}}
             </div>
             @else
                 <div class="px-6 py-4">

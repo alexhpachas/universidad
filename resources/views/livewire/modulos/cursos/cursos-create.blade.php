@@ -1,6 +1,6 @@
 <div>
     <x-jet-danger-button wire:click="$set('open',true)">
-        NUEVO CURSO
+        CREAR CURSO
     </x-jet-danger-button>
 
     <x-jet-dialog-modal wire:model="open">

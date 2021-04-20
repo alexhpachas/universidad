@@ -35,7 +35,7 @@ class FacultadesCreate extends Component
         ]);
 
         $this->reset('open','nombre','codigo','abreviatura','entidade_id');
-        $this->emit('render');
+        $this->emitTo('modulos.facultades.facultades-index','render');
         $this->emit('create');
     }
 

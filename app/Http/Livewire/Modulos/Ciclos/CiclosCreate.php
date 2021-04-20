@@ -23,7 +23,8 @@ class CiclosCreate extends Component
         ]);
 
         $this->reset('open','nombre');
-        $this->emit('render');
+        $this->emitTo('modulos.ciclos.ciclos-index','render');
+        
         
         $this->emit('create');
     }

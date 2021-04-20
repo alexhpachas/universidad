@@ -37,9 +37,10 @@ class CursosCreate extends Component
             'creditos'=>$this->creditos,
             'tipo'=>$this->tipo,                    
         ]);
-
-        $this->emit('render');
+               
         $this->reset('open','codigo','nombre','horas_teoricas','horas_practicas','creditos','tipo');
+        $this->emitTo('modulos.cursos.cursos-index','render'); 
         $this->emit('create');
     }
+    
 }

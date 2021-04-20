@@ -27,8 +27,8 @@ class PersonasUpdate extends Component
         $this->validate();
 
         $this->persona->save();
-        /* $this->emitTo('modulos.personas.personas-index','render'); */
-        $this->emit('render');
+        
+        $this->emitTo('modulos.personas.personas-index','render');
         $this->reset('open');
         $this->emit('update');
 

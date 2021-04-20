@@ -2,7 +2,7 @@
     
     {{-- BOTON CREAR NUEVA ENTIDAD --}}
     <x-jet-danger-button wire:click="$set('open',true)">
-        Crear Nueva Persona
+        Crear Persona
     </x-jet-danger-button>  
 
     {{-- MODAL PARA CREAR NUEVA ENTIDAD --}}
@@ -67,7 +67,7 @@
                     Crear Persona
                 </x-jet-danger-button>
 
-                <x-jet-secondary-button wire:click="cancelar">
+                <x-jet-secondary-button wire:click="$set('open',false)">
                     Cancelar
                 </x-jet-secondary-button>
             </div>            

@@ -24,7 +24,7 @@ class PeriodosCreate extends Component
         ]);
 
         $this->reset('open','nombre');
-        $this->emit('render');
+        $this->emitTo('modulos.periodos.periodos-index','render');
 
         $this->emit('create');
     }

@@ -21,6 +21,8 @@ class CiclosUpdate extends Component
     public function actualizar(){
         $this->validate();
         $this->ciclo->save();
+
+        $this->emitTo('modulos.ciclos.ciclos-update','render');
         $this->emit('render');
         $this->reset('open');
         $this->emit('update');

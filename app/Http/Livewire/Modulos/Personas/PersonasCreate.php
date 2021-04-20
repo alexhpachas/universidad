@@ -41,18 +41,10 @@ class PersonasCreate extends Component
         ]);
 
         $this->reset('open','nombres','apellidos','dni','fecha_nacimiento','email','genero');
-        $this->emit('render');
+        $this->emitTo('modulos.personas.personas-index','render');
 
         $this->emit('create');
     }
-    public function cancelar(){
-        
-
-        $this->reset('open','nombres','apellidos','dni','fecha_nacimiento','email','genero');
-        $this->emit('render');
-        
-    }
-
 
     public function render()
     {

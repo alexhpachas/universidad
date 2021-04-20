@@ -29,9 +29,10 @@ class ProgramasCreate extends Component
             'abreviatura'=>$this->abreviatura,
             'facultade_id'=>$this->facultade_id
         ]);
-        $this->emit('render');
-        $this->emit('create');
+        $this->emitTo('modulos.programas.programas-index','render');
         $this->reset('open','nombre','codigo','abreviatura');
+        $this->emit('create');
+        
 
 
     }

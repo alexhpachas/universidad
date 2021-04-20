@@ -8,10 +8,10 @@
             <div class="px-6 py-4 flex items-center border border-gray-200 shadow-lg">
 
                 {{-- BUSCADOR GENERAL -> COMPONENTE REUTILIZABLE --}}
-                <x-buscadortabla.buscador :type="$type='Ciclos'" />
+                <x-buscadortabla.buscador :type="$type='Cursoplanes'" />
 
                 {{-- BOTON CREAR NUEVA ENTIDAD --}}
-                @livewire('modulos.ciclos.ciclos-create')                   
+                                   
             </div>
             
             {{-- SI HAY AL MENOS UN REGISTRO DIBUJAMOS LA TABLA --}}
@@ -66,11 +66,11 @@
                                     {{ $planEstudio->codigo }}
                                 </div>
                             </td>
-                            <td class="px-6 py-4">
+                            {{-- <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
                                     {{ $planEstudio->curso->nombre }}
                                 </div>
-                            </td>
+                            </td> --}}
                            {{--  <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
                                     {{ $planEstudio->ciclo->nombre }}

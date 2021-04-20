@@ -16,7 +16,7 @@ class CreateEntidadesTable extends Migration
         Schema::create('entidades', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
-            $table->enum('estado',[1,2])->default(1);
+            $table->enum('estado',[1,2])->default(2);
             $table->timestamps();
         });
     }

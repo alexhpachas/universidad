@@ -26,7 +26,7 @@ class ProgramasUpdate extends Component
         $this->validate();
 
         $this->programa->save();
-        $this->emit('render');
+        $this->emitTo('modulos.programas.programas-index','render');
         $this->reset('open');
         $this->emit('update');
     }

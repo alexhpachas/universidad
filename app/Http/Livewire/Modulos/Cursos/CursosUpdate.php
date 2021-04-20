@@ -28,7 +28,9 @@ class CursosUpdate extends Component
         $this->validate();
         
         $this->curso->save();
-        $this->emit('render');
+
+        $this->emitTo('modulos.cursos.cursos-index','render');
+        
         $this->emit('update');
         $this->reset('open');
     }

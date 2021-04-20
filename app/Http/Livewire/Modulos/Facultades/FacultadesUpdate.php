@@ -9,9 +9,7 @@ use Livewire\Component;
 class FacultadesUpdate extends Component
 {
     public $open=false;
-    public $facultade;
-
-    protected $listener=['render'];
+    public $facultade;   
     
     public function mount(Facultade $facultade){
         $this->facultade=$facultade;
@@ -28,6 +26,7 @@ class FacultadesUpdate extends Component
     public function actualizar(){
         $this->facultade->save();
         /* $this->emit('render'); */
+        
         $this->emitTo('modulos.facultades.facultades-index','render');
         $this->reset('open');
         $this->emit('update');

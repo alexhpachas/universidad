@@ -16,12 +16,12 @@ class GruposIndex extends Component
     public $campo='id';
     public $direccion='desc';
 
+    protected $listeners=['render'];
+
     public function updatingbuscador(){
         $this->resetPage();
     }
-
-    protected $listeners=['render'];
-
+    
     public function render()
     {
         $grupos = Grupo::where('estado','2')

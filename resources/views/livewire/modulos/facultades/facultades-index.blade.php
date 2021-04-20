@@ -33,11 +33,11 @@
                                 @endif
                             @endif
                             
-                        </th>
-                        <th wire:click="order('nombre')" scope="col"
+                        </th>                        
+                        <th wire:click="order('codigo')" scope="col"
                             class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Nombre
-                            @if ($this->campo !='nombre').
+                            Codigo
+                            @if ($this->campo !='codigo').
                                 <i class="float-right fas fa-sort mt-1"></i>                                
                             @else
                                 @if ($this->direccion=='asc')
@@ -47,10 +47,10 @@
                                 @endif
                             @endif
                         </th>
-                        <th wire:click="order('codigo')" scope="col"
+                        <th wire:click="order('nombre')" scope="col"
                             class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Codigo
-                            @if ($this->campo !='codigo').
+                            Nombre
+                            @if ($this->campo !='nombre').
                                 <i class="float-right fas fa-sort mt-1"></i>                                
                             @else
                                 @if ($this->direccion=='asc')

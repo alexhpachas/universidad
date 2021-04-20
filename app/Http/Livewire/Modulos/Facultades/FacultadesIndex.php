@@ -5,13 +5,21 @@ namespace App\Http\Livewire\Modulos\Facultades;
 use App\Models\Facultade;
 use Livewire\Component;
 
+use Livewire\WithPagination;
+
 class FacultadesIndex extends Component
 {
+    use WithPagination;
+
     public $buscador;
     public $campo="id";
     public $direccion="desc";
 
     protected $listeners=['render'];
+
+    public function updatingbuscador(){
+        $this->resetPage();
+    }
 
     public function render()
     {

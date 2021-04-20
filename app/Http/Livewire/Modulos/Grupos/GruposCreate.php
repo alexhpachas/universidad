@@ -24,7 +24,7 @@ class GruposCreate extends Component
         ]);
 
         $this->reset('open','nombre');
-        $this->emit('render');
+        $this->emitTo('modulos.grupos.grupos-index','render');
         $this->emit('create');
     }
 

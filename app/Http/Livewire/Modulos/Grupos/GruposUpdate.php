@@ -30,7 +30,7 @@ class GruposUpdate extends Component
         $this->reset('open');
 
         /* Renderiso la vista ese render es recibidoo desde el componente live wire index  */
-        $this->emit('render');
+        $this->emitTo('modulos.grupos.grupos-index','render');
 
         /* Emito un mensaje llamado update -> lo recibira el sweet alert para mostrar una alerta */
         $this->emit('update');

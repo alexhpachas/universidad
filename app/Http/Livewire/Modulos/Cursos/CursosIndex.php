@@ -4,14 +4,21 @@ namespace App\Http\Livewire\Modulos\Cursos;
 
 use App\Models\Curso;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class CursosIndex extends Component
 {
+    use WithPagination;    
     public $buscador="";
     public $campo="id";
     public $direccion="desc";
 
     protected $listeners=['render'];
+
+    public function updatingbuscador(){
+        $this->resetPage();
+    }
+    
     
     public function render()
     {

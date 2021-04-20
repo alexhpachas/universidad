@@ -19,7 +19,7 @@
         <x-slot name="content">
             <div class="mb-4">
                 <x-jet-label value="Nombre Entidad :" />
-                <x-jet-input wire:model.defer="nombre" class="form-control" type="text" placeholder="Ingrese nombre de la entidad" />
+                <x-jet-input wire:model.defer="nombre" class="form-control uppercase" type="text" placeholder="Ingrese nombre de la entidad" />
                 
                 <x-jet-input-error for="nombre" />
             </div>            
@@ -32,7 +32,7 @@
                     Crear Entidad
                 </x-jet-danger-button>
 
-                <x-jet-secondary-button wire:click="$set('open',false)">
+                <x-jet-secondary-button wire:click="cancelar">
                     Cancelar
                 </x-jet-secondary-button>
             </div>            

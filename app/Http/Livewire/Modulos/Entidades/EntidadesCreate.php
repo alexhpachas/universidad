@@ -13,6 +13,11 @@ class EntidadesCreate extends Component
     protected $rules=([
         'nombre'=>'required|unique:entidades'
     ]);
+    
+    public function render()
+    {
+        return view('livewire.modulos.entidades.entidades-create');
+    }
 
     public function guardar(){
 
@@ -23,12 +28,11 @@ class EntidadesCreate extends Component
         ]);
 
         $this->reset('open','nombre');
-        $this->emit('render');
+        $this->emitTo('modulos.entidades.entidades-index','render');
+        $this->emit('create');
     }
 
-
-    public function render()
-    {
-        return view('livewire.modulos.entidades.entidades-create');
+    public function cancelar(){
+        $this->reset('open','nombre');
     }
 }
