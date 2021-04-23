@@ -18,7 +18,7 @@ class Facultade extends Model
         return $this->belongsTo(Entidade::class);
     }
 
-    public function programas(){
+    public function programa(){
         return $this->hasMany(Programa::class);
     }
 
