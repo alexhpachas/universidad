@@ -35,7 +35,7 @@
                                 <div class="mr-3">
                                     <x-jet-label value="Seleccionar Facultad :" />
 
-                                    <select wire:model="idfacultad" class="form-control hover-sm">
+                                    <select wire:model="idfacultad" {{-- wire:click="refresh" --}} class="form-control hover-sm">
                                         <option value="">===SELECCIONE===</option>
                                         @foreach ($facultades as $facultade)
                                             {{-- <option value="{{ $facultade->id }}">{{ $facultade->nombre }}</option> --}}
@@ -51,7 +51,7 @@
                                 <div class="items-center">
                                     <x-jet-label value="Seleccionar Programa :" />
 
-                                    <select wire:model="idprograma" class="form-control">
+                                    <select wire:model="idprograma"  class="form-control">
                                         <option value="" selected>===SELECCIONE===</option>
                                         @foreach ($programas as $programa)
                                             <option value="{{ $programa->id }}">{{ $programa->nombre }}</option>
@@ -68,9 +68,16 @@
                     </div>
 
                     <div class="card-footer bg-white">
-                        <x-jet-danger-button x-on:click="open=true">
+                        @if (isset($this->idprograma))
+                        <x-jet-danger-button x-on:click="open=!open">
                             VER PLANES DE ESTUDIO
                         </x-jet-danger-button>
+                        @else
+                        <x-jet-danger-button x-on:click="open=true" disabled>
+                            VER PLANES DE ESTUDIO
+                        </x-jet-danger-button>
+                        @endif
+                        
                     </div>
                 </div>
                 
@@ -104,8 +111,15 @@
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     <tr class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider mt-3">
                                         <td class="py-2">{{$planEstudio->codigo}}</td>        
-                                        <td class="py-2">ACTIVO</td>
-                                        <td class="py-2"><x-jet-danger-button x-on:click="abrir=true"><i class="fa fa-plus-square"> Curso</i></x-jet-danger-button></td>
+                                        <td class="py-2">
+                                            @if ($planEstudio->estado==2)
+                                                Activo
+                                            @else
+                                                Inactivo
+                                            @endif
+                                            {{-- {{$planEstudio->estado}} --}}
+                                        </td>
+                                        <td class="py-2">@livewire('modulos.curso-planes.curso-planes-create', ['planEstudio' => $planEstudio], key($planEstudio->id))</td>
                                         <td class="py-2"><x-jet-secondary-button>EDITAR</x-jet-secondary-button></td>
                                     </tr>
                                 </tbody>
@@ -123,7 +137,7 @@
                                 {{-- {{$planEstudio}} --}}
                                 {{-- <x-jet-danger-button  wire:click="show({{$planEstudio->id}})">Agregar Cursos</x-jet-danger-button> --}}
                                 
-                                @livewire('modulos.curso-planes.curso-planes-create', ['planEstudio' => $planEstudio], key($planEstudio->id))
+                                {{-- @livewire('modulos.curso-planes.curso-planes-create', ['planEstudio' => $planEstudio], key($planEstudio->id)) --}}
                                                                                                                            
                             @endforeach                             
                                                                                      
@@ -135,7 +149,7 @@
             
                 
                 <div >                    
-                    <div x-show="open" class="card">
+                    <div x-show.transition="open" class="card">
                         <div class="card-header bg-blue-400 border text-white">
                             <p class="ml-3 mt-1 mb-1"><i class="fa fa-rocket"></i> CURSOS DEL PLAN</p></span>
                         </div>
@@ -146,17 +160,18 @@
                                     <tr class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                         <th>Codigo</th>
                                         <th>Curso</th>
-                                        <th>Hrs Teoricas</th>
-                                        <th>Hrs Practicas</th>
-                                        <th>Creditos</th>
+                                        <th>HT</th>
+                                        <th>HP</th>
+                                        <th>CRED</th>
                                         <th>Tipo</th>
                                         <th>Requisitos</th>                                        
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead> 
                                                                                             
                                 <tbody>                                   
                                     @foreach ($cursoPlanes as $cursoPlane) 
-                                    <tr>
+                                    <tr class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                         <td class="py-2">{{$cursoPlane->curso->codigo}}</td>
                                         <td class="py-2">{{$cursoPlane->curso->nombre}}</td>
                                         <td class="py-2">{{$cursoPlane->curso->horas_teoricas}}</td>
@@ -164,6 +179,7 @@
                                         <td class="py-2">{{$cursoPlane->curso->creditos}}</td>
                                         <td class="py-2">{{$cursoPlane->curso->tipo}}</td>
                                         <td class="py-2"><x-jet-secondary-button>Requisitos</x-jet-secondary-button></td>
+                                        <td class="py-2">@livewire('modulos.curso-planes.curso-planes-update', ['cursoPlane' => $cursoPlane], key($cursoPlane->curso->id))</td>
                                         
 
                                     </tr>

@@ -9,6 +9,7 @@ class CursoPlane extends Model
 {
     use HasFactory;
     
+    protected $guarded=[];
     
 
     public function planEstudio(){

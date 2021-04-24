@@ -1,23 +1,28 @@
 <div>
     {{-- <i class="fa fa-flag-checkered"></i> PLANES DE ESTUDIOS REGISTRADOS --}}
 
-    <x-jet-secondary-button wire:click="$set('open',true)" class="float-right inline-flex">
-        <i class="fa fa-plus-square"> AGREGAR</i>
-    </x-jet-secondary-button>
+    <x-jet-danger-button wire:click="$set('open',true)" class="float-center inline-flex">
+        <i class="fa fa-plus-square"> AGREGAR CURSO</i>
+    </x-jet-danger-button>
 
     <x-jet-dialog-modal wire:model="open">
         <x-slot name="title">
             <div class="text-center border-gray-700 border-b-2">
                 AGREGAR CURSO
+                {{$curso_id}}
+        {{$plan_estudio_id}}
+        {{$ciclo_id}}
             </div>
 
         </x-slot>
         
-        <x-slot name="content">            
+        <x-slot name="content">    
+            
             <div class="mb-1">
                 <x-jet-label value="Modalidad" />
                                                                       
-                <x-jet-input type="text" value="REGULAR" class="form-control" disabled />
+                {{-- <x-jet-input type="text" value="REGULAR" class="form-control" disabled /> --}}
+                <x-jet-input wire:model="planEstudio.codigo" type="text" class="form-control" disabled />
 
             </div>
             
@@ -48,7 +53,7 @@
             {{-- PLAN ESTUDIO ID --}}
             <div class="mb-1">
                 <x-jet-label value="Periodo" />
-                <select wire:model="planEstudio.codigo" class="form-control" disabled="true">                                                                                  
+                <select wire:model.defer="planEstudio.codigo" class="form-control">                                                                                  
                         <option value="{{$this->planEstudio->id}}">{{$this->planEstudio->codigo}}</option>                    
                 </select>                
             </div>
@@ -56,9 +61,9 @@
             {{-- CURSO ID --}}
             <div class="mb-1">
                 <x-jet-label value="Seleccione Curso" />
-                <select class="form-control">                                        
+                <select wire:model="curso_id" class="form-control">                                        
                     @foreach ($cursos as $curso)                        
-                        <option value="{{$curso->id}}">{{$curso->nombre}}</option>
+                        <option selected value="{{$curso->id}}">{{$curso->nombre}}</option>
                     @endforeach
                 </select>
                 
@@ -67,7 +72,7 @@
             {{-- CICLO ID --}}
             <div class="mb-1">
                 <x-jet-label value="Seleccione Ciclo" />
-                <select class="form-control">                    
+                <select wire:model.defer="ciclo_id" class="form-control">                    
                     @foreach ($ciclos as $ciclo)
                         <option value="{{$ciclo->id}}">{{$ciclo->nombre}}</option>
                     @endforeach
@@ -75,9 +80,15 @@
             </div>
             
         </x-slot>
-
+        
         <x-slot name="footer">
+            <x-jet-danger-button wire:click="guardar">
+                CREAR CURSO
+            </x-jet-danger-button>
             
+            <x-jet-secondary-button wire:click="$set('open',false)">
+                CANCELAR
+            </x-jet-secondary-button>
         </x-slot>
     </x-jet-dialog-modal>
     
