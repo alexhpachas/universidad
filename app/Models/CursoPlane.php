@@ -13,7 +13,7 @@ class CursoPlane extends Model
     
 
     public function planEstudio(){
-        return $this->belongsTo(planEstudio::class);
+        return $this->belongsTo(PlanEstudio::class);
     }
 
     public function ciclo(){
