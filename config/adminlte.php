@@ -290,7 +290,14 @@ return [
             'route'  => 'unis.cursoplanes',
             'icon' => 'nav-icon fas fa-fw fa-lock',
         ],
+        [
+            'text' => 'Probando',
+            'route'  => 'unis.probando',
+            'icon' => 'nav-icon fas fa-fw fa-lock',
+        ]
     ],
+        
+    
 
     /*
     |--------------------------------------------------------------------------

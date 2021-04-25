@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 class CursosIndex extends Component
 {
     use WithPagination;    
-    public $buscador="";
+    public $buscador;
     public $campo="id";
     public $direccion="desc";
 

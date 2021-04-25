@@ -13,7 +13,7 @@
                 {{-- BOTON CREAR NUEVA ENTIDAD --}}
                 @livewire('modulos.programas.programas-create')                   
             </div>
-            {{$buscador}}
+            
             {{-- SI HAY AL MENOS UN REGISTRO DIBUJAMOS LA TABLA --}}
             @if ($programas->count())
                             
@@ -134,7 +134,7 @@
                                     {{-- BOTON EDITAR --}}
                                     <div>
 
-                                        @livewire('modulos.programas.programas-update', ['programa' => $programa], key($programa->id))                                        
+                                        @livewire('modulos.programas.programas-update', ['programa' => $programa], key(time().$programa->id))                                        
                                         
                                     </div>
                                                                     

@@ -4,19 +4,28 @@ namespace App\Http\Livewire\Modulos\PlanEstudios;
 
 use App\Models\PlanEstudio;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class PlanEstudiosIndex extends Component
 {
-    public $buscador="";
+    use WithPagination;
+    public $buscador;
     public $campo="id";
     public $direccion="desc";
 
     protected $listeners=['render'];
 
+    public function updatingbuscador(){
+        $this->resetPage();
+    }
+
     public function render()
     {
-        $planEstudios = PlanEstudio::where('estado','2')
-                                   ->where('codigo','like','%'.$this->buscador.'%')
+        $buscarlo = "c";
+        $planEstudios = PlanEstudio::where('estado','2')                                   
+                                   ->whereHas('programa',function($query){
+                                       $query->where('nombre','like','%'.$this->buscador.'%');
+                                   })->orwhere('codigo','like','%'.$this->buscador.'%')
                                    ->orderBy($this->campo,$this->direccion)
                                    ->latest('id')
                                    ->paginate(10);

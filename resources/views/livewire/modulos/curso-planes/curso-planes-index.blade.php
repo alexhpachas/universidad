@@ -119,7 +119,7 @@
                                             @endif
                                             {{-- {{$planEstudio->estado}} --}}
                                         </td>
-                                        <td class="py-2">@livewire('modulos.curso-planes.curso-planes-create', ['planEstudio' => $planEstudio], key($planEstudio->id))</td>
+                                        <td class="py-2">@livewire('modulos.curso-planes.curso-planes-create', ['planEstudio' => $planEstudio], key(time().$planEstudio->id))</td>
                                         <td class="py-2"><x-jet-secondary-button>EDITAR</x-jet-secondary-button></td>
                                     </tr>
                                 </tbody>
@@ -153,7 +153,7 @@
                         <div class="card-header bg-blue-400 border text-white">
                             <p class="ml-3 mt-1 mb-1"><i class="fa fa-rocket"></i> CURSOS DEL PLAN</p></span>
                         </div>
-
+                        
                         <div class="card-body">
                             <table class="min-w-full divide-y divide-gray-200 uppercase">
                                 <thead>
@@ -179,7 +179,8 @@
                                         <td class="py-2">{{$cursoPlane->curso->creditos}}</td>
                                         <td class="py-2">{{$cursoPlane->curso->tipo}}</td>
                                         <td class="py-2"><x-jet-secondary-button>Requisitos</x-jet-secondary-button></td>
-                                        <td class="py-2">@livewire('modulos.curso-planes.curso-planes-update', ['cursoPlane' => $cursoPlane], key($cursoPlane->curso->id))</td>
+                                        
+                                        <td class="py-2">@livewire('modulos.curso-planes.curso-planes-update', ['cursoPlane' => $cursoPlane], key(time().$cursoPlane->curso->id))</td>
                                         
 
                                     </tr>
@@ -200,6 +201,7 @@
             {{-- SI HAY AL MENOS UN REGISTRO DIBUJAMOS LA TABLA --}}
 
         </x-diseñotabla.tabla>
+        {{$cursoPlanes->links()}}
     </div>
 
 </div>

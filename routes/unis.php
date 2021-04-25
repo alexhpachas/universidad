@@ -17,6 +17,8 @@ use App\Http\Livewire\Modulos\Grupos\GruposIndex;
 use App\Http\Livewire\Modulos\Periodos\PeriodosIndex;
 use App\Http\Livewire\Modulos\Personas\PersonasIndex;
 use App\Http\Livewire\Modulos\PlanEstudios\PlanEstudiosIndex;
+use App\Http\Livewire\Modulos\Probando\PersonasIndex as ProbandoPersonasIndex;
+use App\Http\Livewire\Modulos\Probando\ProbandoIndex;
 use App\Http\Livewire\Modulos\Programas\ProgramasIndex;
 use App\Models\Programa;
 
@@ -41,6 +43,10 @@ Route::get('programas',[ProgramasIndex::class,'index'])->name('unis.programas');
 Route::get('cursos',[CursosIndex::class,'index'])->name('unis.cursos');
 
 Route::get('cursoplanes',[CursoPlanesIndex::class,'index'])->name('unis.cursoplanes');
+
+Route::get('probando',[ProbandoIndex::class,'index'])->name('unis.probando');
+
+
 
 
 
