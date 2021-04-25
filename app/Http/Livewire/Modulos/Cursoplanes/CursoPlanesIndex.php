@@ -22,14 +22,16 @@ class CursoPlanesIndex extends Component
     public $direccion="desc";
     public $idfacultad;
     public $idprograma;
-    public $idplanestudio;
+    public $idplanestudio=null;
     public $botton=true;
     public $estudio;
+    public $open=false;
 
     protected $listeners=['render'];
 
     public function render()
     {
+        
         $facultades = Facultade::all();   
         $programas = Programa::where('facultade_id',$this->idfacultad)->get();
         $planEstudios = PlanEstudio::where('programa_id',$this->idprograma)->get();
@@ -45,7 +47,16 @@ class CursoPlanesIndex extends Component
 
     public function refresh(){
         
-        $this->reset('idfacultad','idplanestudio','planEstudios','open');
+        
+        $this->idplanestudio=null;
+        $this->reset('idprograma');
+        $this->render();
+    }
+    public function refreshh(){
+        
+        
+        $this->idplanestudio=null;
+        
         $this->render();
     }
 
