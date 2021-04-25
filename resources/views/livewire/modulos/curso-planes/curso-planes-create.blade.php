@@ -1,17 +1,17 @@
-<div>
-    {{-- <i class="fa fa-flag-checkered"></i> PLANES DE ESTUDIOS REGISTRADOS --}}
+<div class="d-inline">
 
-    <x-jet-danger-button wire:click="$set('open',true)" class="float-center inline-flex">
-        <i class="fa fa-plus-square"> AGREGAR CURSO</i>
-    </x-jet-danger-button>
+    <button wire:click="$set('open',true)" class="btn btn-red btn-actions mr-2"><i class="fa fa-plus-square"></i></button>
+
+    {{-- <x-jet-danger-button wire:click="$set('open',true)" class="">
+        <i class="fa fa-plus-square"></i>
+    </x-jet-danger-button> --}}
+    
 
     <x-jet-dialog-modal wire:model="open">
         <x-slot name="title">
             <div class="text-center border-gray-700 border-b-2">
                 AGREGAR CURSO
-                {{$curso_id}}
-        {{$plan_estudio_id}}
-        {{$ciclo_id}}
+                
             </div>
 
         </x-slot>
@@ -32,7 +32,7 @@
                 <x-jet-label value="Facultad :" />
 
                 @if (isset($planEstudio->programa->facultade))                    
-                    <select wire:model.defer="programa" class="form-control" disabled>
+                    <select wire:model.defer="programa" wire:click="refresh" class="form-control" disabled>
                         <option value="{{$programa->facultade->id}}">{{$programa->facultade->nombre}}</option>
                     </select>                                                          
                 @endif    

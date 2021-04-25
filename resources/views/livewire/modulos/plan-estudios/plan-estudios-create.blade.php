@@ -22,7 +22,14 @@
                 <x-jet-input wire:model.defer="codigo" class="form-control" type="text" placeholder="Ingrese nombre del plan Estudios" />
                 
                 <x-jet-input-error for="codigo" />
-            </div>            
+            </div> 
+            <div class="content">
+                <select wire:model.defer="programa_id" class="form-control">
+                    @foreach ($programas as $programa)
+                        <option value="{{$programa->id}}">{{$programa->nombre}}</option>
+                    @endforeach
+                </select>
+            </div>           
         </x-slot>
 
         {{-- PIE DE PAGINA DEL MODAL --}}

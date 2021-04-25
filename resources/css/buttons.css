@@ -1,0 +1,58 @@
+.btn{    
+    @apply font-bold cursor-pointer rounded-md border p-1;    
+    
+
+}
+.btn-block{
+    @apply block text-center w-full;
+}
+.btn-blue{
+    @apply bg-blue-500 text-white transform text-xs uppercase;
+}
+.btn-blue:hover{
+    @apply bg-blue-700 scale-110 text-white;
+}
+.btn-actions{
+     padding: 7px!important;
+     width: 31px;
+     height: 31px;
+ }
+
+.btn-red{
+    @apply bg-red-500 text-white transform text-xs uppercase;
+}
+.btn-red:hover{
+    @apply bg-red-700 scale-110 text-white;
+}
+
+.btn-green{
+    @apply bg-green-500 text-white transform text-xs uppercase;
+}
+.btn-green:hover{
+    @apply bg-green-700 scale-110 text-white;
+}
+
+.btn-yellow{
+    @apply bg-yellow-500 text-white transform text-xs uppercase;
+}
+.btn-yellow:hover{
+    @apply bg-yellow-700 scale-110 text-white;
+}
+
+.btn-purple{
+    @apply bg-purple-500 text-white transform text-xs uppercase;
+}
+.btn-purple:hover{
+    @apply bg-purple-700 scale-110 text-white;
+}
+
+.btn-celeste{
+    @apply text-white transform text-xs uppercase;
+    background-color:#59fff4;
+    
+}
+.btn-celeste:hover{
+    @apply scale-110 text-white;
+    background-color:#09bdb1;
+}
+

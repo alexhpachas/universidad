@@ -21,7 +21,7 @@ class PlanEstudiosIndex extends Component
 
     public function render()
     {
-        $buscarlo = "c";
+        
         $planEstudios = PlanEstudio::where('estado','2')                                   
                                    ->whereHas('programa',function($query){
                                        $query->where('nombre','like','%'.$this->buscador.'%');

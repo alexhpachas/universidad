@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Modulos\PlanEstudios;
 
 use App\Models\PlanEstudio;
+use App\Models\Programa;
 use Livewire\Component;
 
 class PlanEstudiosUpdate extends Component
@@ -15,7 +16,8 @@ class PlanEstudiosUpdate extends Component
     }
     
     protected $rules=[
-        'planEstudio.codigo'=>'required'
+        'planEstudio.codigo'=>'required',
+        'planEstudio.programa_id'=>'required'
     ];
 
     public function actualizar(){
@@ -31,6 +33,7 @@ class PlanEstudiosUpdate extends Component
 
     public function render()
     {
-        return view('livewire.modulos.plan-estudios.plan-estudios-update');
+        $programas = Programa::all();
+        return view('livewire.modulos.plan-estudios.plan-estudios-update',compact('programas'));
     }
 }

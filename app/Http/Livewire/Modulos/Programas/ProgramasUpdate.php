@@ -23,8 +23,7 @@ class ProgramasUpdate extends Component
     }
 
     public function actualizar(){
-        
-
+    
         $this->programa->save();
         $this->emitTo('modulos.programas.programas-index','render');
         $this->reset('open');
