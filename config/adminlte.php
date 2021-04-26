@@ -87,7 +87,7 @@ return [
     'layout_boxed' => null,
     'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
-    'layout_fixed_footer' => null, 
+    'layout_fixed_footer' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -238,66 +238,73 @@ return [
             'text' => 'Dashboard',
             'route'  => 'unis.home',
             'icon' => 'nav-icon fas fa-tachometer-alt',
-        ],       
+        ],
         ['header' => 'OPCIONES DE SISTEMA'],
         [
-            'text' => 'Entidades',
-            'route'  => 'unis.entidades',
-            'icon' => 'nav-icon fas fa-user',
+            'text'     => 'Gestion Académica',
+            'icon'     => 'nav-icon fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Entidades',
+                    'route'  => 'unis.entidades',
+                    'icon' => 'nav-icon fas fa-hotel',
+                ],
+                [
+                    'text' => 'Facultades',
+                    'route'  => 'unis.facultades',
+                    'icon' => 'nav-icon fas fa-landmark',
+                ],
+                [
+                    'text' => 'Programas',
+                    'route'  => 'unis.programas',
+                    'icon' => 'nav-icon fas fa-graduation-cap',
+                ],
+                [
+                    'text' => 'Plan de Estudio',
+                    'route'  => 'unis.planestudios',
+                    'icon' => 'nav-icon fas fa-book',
+                ],
+                [
+                    'text' => 'Cursos',
+                    'route'  => 'unis.cursos',
+                    'icon' => 'nav-icon fas fa-file-signature',
+                ],
+                [
+                    'text' => 'Periodos',
+                    'route'  => 'unis.periodos',
+                    'icon' => 'nav-icon fas fa-calendar-alt',
+                ],
+                [
+                    'text' => 'Ciclos',
+                    'route'  => 'unis.ciclos',
+                    'icon' => 'nav-icon fas fa-layer-group',
+                ],
+                [
+                    'text' => 'Grupos',
+                    'route'  => 'unis.grupos',
+                    'icon' => 'nav-icon fas fa-users',
+                ],
+                [
+                    'text' => 'Personas',
+                    'route'  => 'unis.personas',
+                    'icon' => 'nav-icon fas fa-user',
+                ],
+                [
+                    'text' => 'Planes de Estudios',
+                    'route'  => 'unis.cursoplanes',
+                    'icon' => 'nav-icon fas fa-book-open',
+                ],
+                [
+                    'text' => 'Probando',
+                    'route'  => 'unis.probando',
+                    'icon' => 'nav-icon fas fa-fw fa-lock',
+                ],
+            ],
         ],
-        [
-            'text' => 'Facultades',
-            'route'  => 'unis.facultades',
-            'icon' => 'nav-icon fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Programas',
-            'route'  => 'unis.programas',
-            'icon' => 'nav-icon fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Plan Estudios',
-            'route'  => 'unis.planestudios',
-            'icon' => 'nav-icon fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Cursos',
-            'route'  => 'unis.cursos',
-            'icon' => 'nav-icon fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Periodos',
-            'route'  => 'unis.periodos',
-            'icon' => 'nav-icon fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Ciclos',
-            'route'  => 'unis.ciclos',
-            'icon' => 'nav-icon fas fa-fw fa-lock',
-        ],        
-        [
-            'text' => 'Grupos',
-            'route'  => 'unis.grupos',
-            'icon' => 'nav-icon fas fa-fw fa-lock',
-        ],        
-        [
-            'text' => 'Personas',
-            'route'  => 'unis.personas',
-            'icon' => 'nav-icon fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Planes',
-            'route'  => 'unis.cursoplanes',
-            'icon' => 'nav-icon fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Probando',
-            'route'  => 'unis.probando',
-            'icon' => 'nav-icon fas fa-fw fa-lock',
-        ]
-    ],
         
-    
+    ],
+
+
 
     /*
     |--------------------------------------------------------------------------
