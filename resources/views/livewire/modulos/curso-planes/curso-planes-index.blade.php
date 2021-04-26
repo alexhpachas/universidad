@@ -171,9 +171,10 @@
                                 <thead>
                                     <tr class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                         <th>Plan</th>
-                                        <th>proggit</th>
+                                        <th>prog</th>
                                         <th>Codigo</th>
                                         <th>Curso</th>
+                                        <th>Ciclo</th>
                                         <th>HT</th>
                                         <th>HP</th>
                                         <th>CRED</th>
@@ -191,6 +192,7 @@
                                         <td class="py-2">{{$cursoPlane->planEstudio->programa->abreviatura}}</td>
                                         <td class="py-2">{{$cursoPlane->curso->codigo}}</td>
                                         <td class="py-2">{{$cursoPlane->curso->nombre}}</td>
+                                        <td class="py-2" >{{$cursoPlane->ciclo->nombre}}</td>
                                         <td class="py-2">{{$cursoPlane->curso->horas_teoricas}}</td>
                                         <td class="py-2">{{$cursoPlane->curso->horas_practicas}}</td>
                                         <td class="py-2">{{$cursoPlane->curso->creditos}}</td>
