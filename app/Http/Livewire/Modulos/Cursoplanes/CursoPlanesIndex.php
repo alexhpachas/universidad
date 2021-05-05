@@ -35,12 +35,12 @@ class CursoPlanesIndex extends Component
         $facultades = Facultade::all();   
         $programas = Programa::where('facultade_id',$this->idfacultad)->get();
         $planEstudios = PlanEstudio::where('programa_id',$this->idprograma)->get();
-        $cursoPlanes = CursoPlane::where('plan_estudio_id',$this->idplanestudio)->paginate(10);                     
+        $cursoPlanes = CursoPlane::where('plan_estudio_id',$this->idplanestudio)->latest('id')->paginate(10);                     
         return view('livewire.modulos.curso-planes.curso-planes-index',compact('facultades','programas','planEstudios','cursoPlanes'));
     }
 
     public function mostrar($id){
-        $estudios = CursoPlane::find($id);
+        /* $estudios = CursoPlane::find($id); */
         $this->idplanestudio = $id;
         $this->render();
     }

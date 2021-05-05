@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\unis\HomeController;
 
 use App\Http\Livewire\Modulos\Ciclos\CiclosIndex;
+
+use App\Http\Livewire\Modulos\CursoGrupos\CursoGruposCreate;
+use App\Http\Livewire\Modulos\CursoGrupos\CursoGruposIndex;
 use App\Http\Livewire\Modulos\Cursoplanes\CursoPlanesIndex;
 use App\Http\Livewire\Modulos\Cursoplanes\PlanCursosIndex;
 use App\Http\Livewire\Modulos\Cursos\CursosIndex;
@@ -45,6 +48,8 @@ Route::get('cursos',[CursosIndex::class,'index'])->name('unis.cursos');
 Route::get('cursoplanes',[CursoPlanesIndex::class,'index'])->name('unis.cursoplanes');
 
 Route::get('probando',[ProbandoIndex::class,'index'])->name('unis.probando');
+
+Route::get('cursogrupos',[CursoGruposIndex::class,'index'])->name('unis.cursogrupos');
 
 
 
