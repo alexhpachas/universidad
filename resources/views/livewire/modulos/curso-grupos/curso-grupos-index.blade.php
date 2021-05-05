@@ -56,86 +56,196 @@
                                 @endforeach
                             </select>
                         </div>
-                        
-                            <x-jet-danger-button wire:click="mostrar" class="mt-3 mr-3 bg-green-500 hover:bg-green-700" >
-                                Ver Cursos
-                            </x-jet-danger-button>                                                                                                                            
+
+                        <x-jet-danger-button wire:click="mostrar" class="mt-3 mr-3 bg-green-500 hover:bg-green-700">
+                            Ver Cursos
+                        </x-jet-danger-button>
                     </div>
-                    
+
                 </div>
             </div>
         </div>{{-- CIERRE DEL CARD --}}
-        
-        <div wire:loading wire:target="mostrar" class="text-center mb-4 bg-green-100 border border-red-400 text-green-700 px-4 py-3 rounded relative w-full">
-            <strong class="font-bold">!Procesando Datos!</strong>
-            <span class="block sm:inline">Por favor espere...!</span>
-        </div>
-       {{--  @php
-        $seleccion = ['1','2'];
-   @endphp --}}
+
+        @if (isset($idplanestudio))
+            <div wire:loading wire:target="mostrar"
+                class="text-center mb-4 bg-green-100 border border-red-400 text-green-700 px-4 py-3 rounded relative w-full">
+                <strong class="font-bold">!Procesando Datos!</strong>
+                <span class="block sm:inline">Por favor espere...!</span>
+            </div>
+        @endif
+
         {{-- OTRO CARD PARA EL CONTENIDO --}}
         @if (isset($idplanestudios))
-            
-                <div class="card grid-cols-4">
-                    <div class="card-header bg-blue-400 border text-white">
-                        <p class="ml-3 mt-1 mb-1"> GENERAR SECCIONES @livewire('modulos.curso-grupos.curso-grupos-create')</p></span>
-                    </div>
-                    {{-- <livewire:modulos.curso-grupos.curso-grupos-create selected = "$seleccion" />  --}}
-                    {{-- CONTENIDO DEL CARD --}}
-                    <div class="card-body">
-                        <table class="min-w-full divide-y divide-gray-200 uppercase">
-                            <thead>
+
+            <div class="card grid-cols-4">
+                <div class="card-header bg-blue-400 border text-white">
+                    <p class="ml-3 mt-1 mb-1"> GENERAR SECCIONES<a wire:click="$set('open',true)"
+                            class="btn btn-red btn-actions float-right"><i class="fas fa-plus"></i></a></p></span>
+                </div>
+                {{-- <livewire:modulos.curso-grupos.curso-grupos-create selected = "$seleccion" /> --}}
+                {{-- CONTENIDO DEL CARD --}}
+                <div class="card-body">
+                    <table class="min-w-full divide-y divide-gray-200 uppercase">
+                        <thead>
+                            <tr
+                                class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                                <th></th>
+                                <th>Plan</th>
+                                <th>Codigo</th>
+                                <th>Carrera</th>
+                                <th>Curso</th>
+                                <th>Ciclo</th>
+                                {{-- <th>Acciones</th> --}}
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($cursoPlanes as $cursoPlane)
+
                                 <tr
-                                    class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                                    <th></th>
-                                    <th>Plan</th>
-                                    <th>Codigo</th>
-                                    <th>Carrera</th>
-                                    <th>Curso</th>
-                                    <th>Ciclo</th>
-                                    {{-- <th>Acciones</th> --}}
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b border-blue-200 hover:bg-gray-100">
+                                    {{-- <td class="py-2">
+                                            <label class="cursor-pointer">                                                
+                                                {!! Form::checkbox('$selected[]', $cursoPlane->id, null , ['class'=>'text-red-600']) !!}
+                                                {{$cursoPlane->curso->nombre}}
+                                            </label>
+                                        </td> --}}
+                                    <td class="py-2">
+                                        <x-jet-checkbox wire:model="selecciones.{{ $cursoPlane->id }}"
+                                            class="cursor-pointer" value="{{ $cursoPlane->curso->nombre }}" />
+                                        {{ $cursoPlane->id }}
+                                    </td>
+                                    <td class="py-2">{{ $cursoPlane->planEstudio->codigo }}</td>
+                                    <td class="py-2">{{ $cursoPlane->curso->codigo }}</td>
+                                    <td class="py-2">{{ $cursoPlane->planEstudio->programa->abreviatura }}</td>
+                                    <td class="py-2">{{ $cursoPlane->curso->nombre }}</td>
+                                    <td class="py-2">{{ $cursoPlane->ciclo->nombre }}</td>
+
+                                    {{-- <td>@livewire('modulos.curso-grupos.curso-grupos-create', ['cursoPlane' => $cursoPlane,'datos'=>$datos], key($cursoPlane->id))</td> --}}
+
+                                    {{-- <td class="py-2">@livewire('modulos.curso-planes.curso-planes-update', ['cursoPlane'=>$cursoPlane], key(time().$cursoPlane->curso->id))</td> --}}
                                 </tr>
-                            </thead>
-                           
-                            <tbody>
-                                @foreach ($cursoPlanes as $cursoPlane)
-                                    
-                                    <tr class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b border-blue-200 hover:bg-gray-100">
-                                        
-                                        <td class="py-2"><x-jet-checkbox wire:model="selected.{{$cursoPlane->id}}" class="cursor-pointer" value="{{$cursoPlane->id}}" />{{$cursoPlane->id}}  </td>
-                                        <td class="py-2">{{ $cursoPlane->planEstudio->codigo }}</td>
-                                        <td class="py-2">{{ $cursoPlane->curso->codigo }}</td>
-                                        <td class="py-2">{{ $cursoPlane->planEstudio->programa->abreviatura }}</td>
-                                        <td class="py-2">{{ $cursoPlane->curso->nombre }}</td>
-                                        <td class="py-2">{{ $cursoPlane->ciclo->nombre }}</td>
-                                        <td><a wire:click="identificarr({{$cursoPlane->id}})" class="btn btn-actions btn-green"></a></td>
-                                        {{-- <td>@livewire('modulos.curso-grupos.curso-grupos-create', ['cursoPlane' => $cursoPlane,'datos'=>$datos], key($cursoPlane->id))</td> --}}
-                                        
-                                        {{-- <td class="py-2">@livewire('modulos.curso-planes.curso-planes-update', ['cursoPlane'=>$cursoPlane], key(time().$cursoPlane->curso->id))</td> --}}
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                                                                                                                        
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+
+            <div class="grid-cols-4">
+
+                {{-- @foreach ($selected as $key => $item)
+                        <input class="mb-3" wire:model='selected.{{$key }}' type="text" />
+                    @endforeach --}}
+
+                {{-- @foreach ($selected as $key => $item)
+                        <input class="mb-3" wire:model='selected.{{$key }}' type="text" />
+                    @endforeach --}}
+                @foreach ($selecciones as $key => $seleccione)
+                    {{-- {{$item}}<br> --}}
+                    <p>{{ $seleccione }}{{-- {{$key}} --}}</p>
+                @endforeach
+
+                @php
+                    $var = count($selecciones);
+                    echo 'seleccionados ' . $var;
+                @endphp
+
+            </div>
+
+
+
+            {{-- MODAL  PARA CREAR GRUPO --}}
+            <x-jet-dialog-modal wire:model="open">
+                <x-slot name="title">
+                    <div class="text-center border-gray-700 border-b-2">
+                        CREAR GRUPO
                     </div>
-                                     
-                           
-                </div>
+                </x-slot>
 
-                <div class="grid-cols-4">
-                   
-                    @foreach ($selected as $item)
-                        {{$item}}
+                <x-slot name="content">
+                    <p class="mb-2 font-bold">Periodo</p>
+
+
+                    <div class="inline">
+                        @if (isset($periodos))
+                            <select wire:model="periodo_id" class="form-control">
+                                <option value="">=====SELECCIONE=====</option>
+                                @foreach ($periodos as $periodo)
+                                    <option value="{{ $periodo->id }}">{{ $periodo->nombre }}</option>
+                                @endforeach
+                            </select>
+                        @endif
+
+                        <x-jet-input-error for="periodo_id" />
+                    </div>
+
+
+
+
+                    <p class="mb-2 font-bold">Cursos</p>
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="inline">
+                                @if (count($selecciones) > 0)
+                                    @foreach ($selecciones as $key => $seleccione)
+                                        @if ($selecciones[$key] != null)
+                                            <p>
+                                                <li>{{ $selecciones[$key] }}{{ $key }}</li>
+                                            </p>
+                                        @endif
+                                    @endforeach
+                                    {{-- <a wire:click="$set('open',false)" class="btn btn-red btn-actions float-right"><i
+                                            class="fas fa-plus"></i></a> --}}
+                                @else
+                                    <p>No ha seleccionado ningún curso</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <x-jet-input-error for="selecciones" />
+
+
+                    <p class="mb-2 font-bold">Secciones</p>
+
+                    <div class="card">
+                        <div class="card-body">
+                            @foreach ($grupos as $grupo)
+                                <div class="inline uppercase">
+                                    <label class="cursor-pointer">
+                                        <x-jet-checkbox wire:model="seleccionesSeccion.{{ $grupo->id }}"
+                                            value="{{ $grupo->nombre }}" class="ml-3 cursor-pointer">
+                                        </x-jet-checkbox>
+                                        {{ $grupo->nombre }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+
+
+                        <x-jet-input-error for="seleccionesSeccion" />
+                    </div>
+
+                    @foreach ($seleccionesSeccion as $items)
+                        {{ $items }}
                     @endforeach
+                </x-slot>
 
-                    {{-- @if (isset($selected[0]))
-                    {{$selected[1]}}
-                    @endif --}}
-                        
-                  
-                   {{--  {{$datos}} --}}                                                                           
-                </div>
-            
+                <x-slot name="footer">
+                    <x-jet-danger-button wire:click="guardar">
+                        CREAR REGISTRO
+                    </x-jet-danger-button>
+
+                    <x-jet-secondary-button wire:click="resetear">
+                        CANCELAR
+                    </x-jet-secondary-button>
+                </x-slot>
+            </x-jet-dialog-modal>
+
         @endif
 
     </div>
