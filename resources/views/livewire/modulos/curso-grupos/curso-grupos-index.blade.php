@@ -66,6 +66,7 @@
             </div>
         </div>{{-- CIERRE DEL CARD --}}
 
+        
         @if (isset($idplanestudio))
             <div wire:loading wire:target="mostrar"
                 class="text-center mb-4 bg-green-100 border border-red-400 text-green-700 px-4 py-3 rounded relative w-full">
@@ -75,16 +76,45 @@
         @endif
 
         {{-- OTRO CARD PARA EL CONTENIDO --}}
-        @if (isset($idplanestudios))
-
+        @if (isset($idplanestudios))        
             <div class="card grid-cols-4">
                 <div class="card-header bg-blue-400 border text-white">
                     <p class="ml-3 mt-1 mb-1"> GENERAR SECCIONES<a wire:click="$set('open',true)"
                             class="btn btn-red btn-actions float-right"><i class="fas fa-plus"></i></a></p></span>
+                            
                 </div>
                 {{-- <livewire:modulos.curso-grupos.curso-grupos-create selected = "$seleccion" /> --}}
                 {{-- CONTENIDO DEL CARD --}}
+                
                 <div class="card-body">
+
+                    {{-- PROBANDO BUSCADOR --}}
+
+                 
+                        <input type="text" wire:model="buscar" wire:keydown.enter="asignarPrimero()"  class="form-control" placeholder="Buscar Curso">
+                        @if ($buscar!="")   
+                        @if(count($cursos)>0)                                                                            
+                        <div class="shadow rounded px-3 pt-3 pb-0 ">
+                            @foreach ($cursos as $curso)
+                                <div class="cursor-pointer hover:text-red-700 ">
+                                    <a  wire:click="asignar({{$curso->id}})" >{{$curso->nombre}}</a>                                    
+                                </div>
+                            @endforeach
+                            @endif
+                        </div>                         
+                        @endif
+                    
+                        @if (isset($dato))
+                            Selecciono : {{$dato->nombre}}
+                            <br>
+                            id : {{$dato->id}}
+                        @endif
+
+                        <div wire:poll.10s>
+                            <small class="text-muted">Fecha Actual : {{ now()}}</small>
+                        </div>
+
+                    {{-- CERRANDO EL BUSCADOR --}}
                     <table class="min-w-full divide-y divide-gray-200 uppercase">
                         <thead>
                             <tr

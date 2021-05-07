@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Modulos\CursoGrupos;
 
+use App\Models\Curso;
 use App\Models\CursoPlane;
 use App\Models\Facultade;
 use App\Models\Grupo;
@@ -17,6 +18,13 @@ class CursoGruposIndex extends Component
     public array $selecciones = [];
     public array $seleccionesSeccion = [];
     public $open=false;
+
+    public $buscador;
+    public $buscar;
+    public $activo=false;
+    public $cursos;
+
+    public $dato;
 
     /* VARIABLES A INSERTAR */
 
@@ -34,6 +42,19 @@ class CursoGruposIndex extends Component
         'selecciones'=>'required'
     ];
 
+   
+
+    public function asignar(Curso $id){
+        
+        $this->dato=$id;
+        $this->reset('buscar');
+    }
+
+    public function asignarPrimero(){
+        $this->dato = Curso::where('nombre','like','%'.$this->buscar.'%')->first();
+        $this->reset('buscar');
+    }
+
     public function render()
     {
         $facultades = Facultade::all();
@@ -42,6 +63,9 @@ class CursoGruposIndex extends Component
         $cursoPlanes  = CursoPlane::where('plan_estudio_id', $this->idplanestudios)->get();
         $grupos = Grupo::all();
         $periodos = Periodo::all();
+        $this->cursos=Curso::where('nombre','like','%'.$this->buscar.'%')->take(3)->get();
+    
+        
         return view('livewire.modulos.curso-grupos.curso-grupos-index', compact('facultades', 'programas', 'planEstudios', 'cursoPlanes', 'grupos','periodos'));
     }
 
@@ -61,6 +85,7 @@ class CursoGruposIndex extends Component
     public function mostrar()
     {
         $this->idplanestudios = $this->idplanestudio;
+        $this->reset('selecciones');
     }
 
 
