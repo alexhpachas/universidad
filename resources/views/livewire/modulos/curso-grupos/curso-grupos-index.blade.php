@@ -115,6 +115,7 @@
                         </div>
 
                     {{-- CERRANDO EL BUSCADOR --}}
+
                     <table class="min-w-full divide-y divide-gray-200 uppercase">
                         <thead>
                             <tr
@@ -134,15 +135,15 @@
 
                                 <tr
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b border-blue-200 hover:bg-gray-100">
-                                    {{-- <td class="py-2">
+                                   {{--  <td class="py-2">
                                             <label class="cursor-pointer">                                                
-                                                {!! Form::checkbox('$selected[]', $cursoPlane->id, null , ['class'=>'text-red-600']) !!}
-                                                {{$cursoPlane->curso->nombre}}
+                                                {!! Form::checkbox('cursoPlanes[]', $cursoPlane->id, null , ['class'=>'text-red-600']) !!}
+                                                {{$cursoPlane->curso->id}}
                                             </label>
-                                        </td> --}}
+                                        </td> --}}                                    
                                     <td class="py-2">
-                                        <x-jet-checkbox wire:model="selecciones.{{ $cursoPlane->id }}"
-                                            class="cursor-pointer" value="{{ $cursoPlane->curso->nombre }}" />
+                                        <x-jet-checkbox wire:model="seleccionesCurso" 
+                                            class="cursor-pointer"  value="{{ $cursoPlane->curso->id }}" />
                                         {{ $cursoPlane->id }}
                                     </td>
                                     <td class="py-2">{{ $cursoPlane->planEstudio->codigo }}</td>
@@ -173,15 +174,10 @@
                 {{-- @foreach ($selected as $key => $item)
                         <input class="mb-3" wire:model='selected.{{$key }}' type="text" />
                     @endforeach --}}
-                @foreach ($selecciones as $key => $seleccione)
-                    {{-- {{$item}}<br> --}}
-                    <p>{{ $seleccione }}{{-- {{$key}} --}}</p>
+                @foreach ($seleccionesCurso as $key => $seleccione)                    
+                    <p>{{ $seleccione}}</p>
                 @endforeach
-
-                @php
-                    $var = count($selecciones);
-                    echo 'seleccionados ' . $var;
-                @endphp
+               
 
             </div>
 
@@ -220,16 +216,19 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="inline">
-                                @if (count($selecciones) > 0)
-                                    @foreach ($selecciones as $key => $seleccione)
-                                        @if ($selecciones[$key] != null)
+                                @if (count($seleccionesCurso) > 0)
+                                    @foreach ($seleccionesCurso as $key => $seleccione)
+                                        @if ($seleccione != null)
                                             <p>
-                                                <li>{{ $selecciones[$key] }}{{ $key }}</li>
+                                                <li>{{ $seleccionesCurso[$key] }}</li>
                                             </p>
                                         @endif
                                     @endforeach
-                                    {{-- <a wire:click="$set('open',false)" class="btn btn-red btn-actions float-right"><i
-                                            class="fas fa-plus"></i></a> --}}
+                                    
+                                    @if (isset($var))
+                                    {{$var}}    
+                                    @endif
+                                    
                                 @else
                                     <p>No ha seleccionado ningún curso</p>
                                 @endif
@@ -237,7 +236,7 @@
                         </div>
                     </div>
 
-                    <x-jet-input-error for="selecciones" />
+                    <x-jet-input-error for="seleccionesCurso" />
 
 
                     <p class="mb-2 font-bold">Secciones</p>
@@ -247,8 +246,9 @@
                             @foreach ($grupos as $grupo)
                                 <div class="inline uppercase">
                                     <label class="cursor-pointer">
-                                        <x-jet-checkbox wire:model="seleccionesSeccion.{{ $grupo->id }}"
-                                            value="{{ $grupo->nombre }}" class="ml-3 cursor-pointer">
+
+                                        <x-jet-checkbox wire:model="seleccionesSeccion"
+                                            value="{{ $grupo->id }}" class="ml-3 cursor-pointer">
                                         </x-jet-checkbox>
                                         {{ $grupo->nombre }}
                                     </label>
@@ -260,9 +260,18 @@
                         <x-jet-input-error for="seleccionesSeccion" />
                     </div>
 
-                    @foreach ($seleccionesSeccion as $items)
-                        {{ $items }}
-                    @endforeach
+                    {{-- @foreach ($seleccionesSeccion as $keys => $items)
+                        @if ($seleccionesSeccion[$keys] != null) 
+                            <p>
+                                <li>{{$seleccionesSeccion[$keys]}}{{$keys}}</li>                                   
+                            </p>
+                        @endif
+                        
+                    @endforeach --}}
+                    
+                    {{-- {{$periodo_id}}
+                    
+                    {{ auth()->user()->id }} --}}
                 </x-slot>
 
                 <x-slot name="footer">

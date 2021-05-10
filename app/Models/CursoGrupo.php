@@ -5,12 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
+
 class CursoGrupo extends Model
 {
     use HasFactory;
+    protected $guarded=[];
 
     public function cursoPlane(){
-        return $this->belongsTo(CursoPlane::class);
+        return $this->belongsToMany(CursoPlane::class);
     }
 
     public function periodos(){
@@ -18,7 +21,7 @@ class CursoGrupo extends Model
     }
 
     public function grupos(){
-        return $this->belongsTo(Grupo::class);
+        return $this->belongsToMany(Grupo::class);
     }
 
     public function users(){

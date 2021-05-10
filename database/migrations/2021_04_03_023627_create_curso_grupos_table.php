@@ -15,13 +15,13 @@ class CreateCursoGruposTable extends Migration
     {
         Schema::create('curso_grupos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('curso_plane_id');
-            $table->unsignedBigInteger('grupo_id');
+            /* $table->unsignedBigInteger('curso_plane_id'); */
+            /* $table->unsignedBigInteger('grupo_id'); */
             $table->unsignedBigInteger('periodo_id');
             $table->unsignedBigInteger('user_id');
 
-            $table->foreign('curso_plane_id')->references('id')->on('curso_planes')->onUpdate('cascade');
-            $table->foreign('grupo_id')->references('id')->on('grupos')->onUpdate('cascade');
+            /* $table->foreign('curso_plane_id')->references('id')->on('curso_planes')->onUpdate('cascade'); */
+            /* $table->foreign('grupo_id')->references('id')->on('grupos')->onUpdate('cascade'); */
             $table->foreign('periodo_id')->references('id')->on('periodos')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->timestamps();

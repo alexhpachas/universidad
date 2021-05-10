@@ -3,19 +3,26 @@
 namespace App\Http\Livewire\Modulos\CursoGrupos;
 
 use App\Models\Curso;
+use App\Models\CursoGrupo;
 use App\Models\CursoPlane;
 use App\Models\Facultade;
 use App\Models\Grupo;
 use App\Models\Periodo;
 use App\Models\PlanEstudio;
 use App\Models\Programa;
+use App\Models\User;
+use Faker\Core\Number;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\Request;
+
 
 class CursoGruposIndex extends Component
 {
     public $idprograma, $idfacultad, $idplanestudio, $idplanestudios;
-    public array $selecciones = [];
+    public array $seleccionesCurso = [];
+    public array $seleccionesCursoNombre = []; 
     public array $seleccionesSeccion = [];
     public $open=false;
 
@@ -28,21 +35,18 @@ class CursoGruposIndex extends Component
 
     /* VARIABLES A INSERTAR */
 
-    public $curso_plane_id,$grupo_id,$periodo_id,$user_id;
+    public $curso_plane_id,$periodo_id,$user_id='1';
 
 
     protected $listeners = ['render'];
 
-    protected $rules = [
-        'curso_plane_id'=>'required',
-        'grupo_id'=>'required',
+    protected $rules = [        
+        
         'periodo_id'=>'required',
         'user_id'=>'required',
         'seleccionesSeccion'=>'required',
-        'selecciones'=>'required'
-    ];
-
-   
+        'seleccionesCurso'=>'required'
+    ];   
 
     public function asignar(Curso $id){
         
@@ -69,23 +73,46 @@ class CursoGruposIndex extends Component
         return view('livewire.modulos.curso-grupos.curso-grupos-index', compact('facultades', 'programas', 'planEstudios', 'cursoPlanes', 'grupos','periodos'));
     }
 
-    public function guardar(){
+    /* FUNCION PARA GUARDAR UN REGISTRO EN LA TABLA CURSO_GRUPO */
+    public function guardar(){        
+        
         $this->validate();
+        $grupos = CursoGrupo::create([            
+            'periodo_id'=>$this->periodo_id,
+            'user_id'=>$this->user_id
+        ]);
+        
+        if ($this->seleccionesCurso) {
+            $grupos->cursoPlane()->attach($this->seleccionesCurso);    
+            
+        }
+
+        if ($this->seleccionesSeccion) {
+            $grupos->grupos()->attach($this->seleccionesSeccion);    
+        }
+
+        $this->reset('open','user_id','periodo_id','seleccionesCurso','seleccionesSeccion');
+        $this->emit('create');
+        
+    
     }
 
+    /* METODO SE EJECUTA AL CAMBIAR DATOS DEL COMBO */
     public function refresh()
     {
         $this->reset('idplanestudio', 'idplanestudios');
     }
 
+    /* METODO QUE SE EJECUTA AL DAR CLICK EN EL BOTON CANCELAR DEL MODAL */
     public function resetear(){
-        $this->reset('selecciones','open','seleccionesSeccion');
+        $this->reset('seleccionesCurso','open','seleccionesSeccion');
     }  
 
+    /* FUNCION QUE SE EJECUTA AL PRECIONAR EL BOTON  "VER CURSOS" */
     public function mostrar()
     {
         $this->idplanestudios = $this->idplanestudio;
-        $this->reset('selecciones');
+        $this->reset('seleccionesCurso');
     }
 
 
