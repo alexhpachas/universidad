@@ -79,7 +79,7 @@ class CursoGruposIndex extends Component
         $this->validate();
         $grupos = CursoGrupo::create([            
             'periodo_id'=>$this->periodo_id,
-            'user_id'=>$this->user_id
+            'user_id'=>auth()->user()->id
         ]);
         
         if ($this->seleccionesCurso) {
