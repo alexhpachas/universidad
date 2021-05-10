@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class CursoGrupo extends Model
 {
     use HasFactory;
-    protected $guarded=[];
+    protected $guarded=['created_at','updated_at'
+];
 
     public function cursoPlane(){
         return $this->belongsToMany(CursoPlane::class);
