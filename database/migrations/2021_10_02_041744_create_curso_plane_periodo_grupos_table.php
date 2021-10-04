@@ -28,6 +28,7 @@ class CreateCursoPlanePeriodoGruposTable extends Migration
                 /* $table->foreign('periodo_id')->references('id')->on('periodos')->onUpdate('cascade'); */
                 $table->foreign('curso_plane_periodo_id')->references('id')->on('curso_plane_periodos')->onDelete('cascade');
                 /* $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');    */
+                $table->unique(['grupo_id','curso_plane_periodo_id'],'grupo_id_curso_plane_periodo_id');
             $table->timestamps();
         });
     }

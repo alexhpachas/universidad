@@ -87,6 +87,7 @@ class CursoGruposIndex extends Component
         
         foreach ($this->seleccionesCurso as $seleccion => $value) {            
             $verificar = CursoPlanePeriodo::where('curso_plane_ciclo_id',$value)->where('periodo_id',$this->periodo_id)->first();
+            $verificar2 = CursoPlanePeriodoGrupo::where('grupo_id',$values)->where('curso_plane_periodo_id',$value)->first();
             /* $verificar2 = CursoPlanePeriodo::where('periodo_id',$this->periodo_id)->first(); */
             if (!$verificar) {                            
                 $grupos = CursoPlanePeriodo::create([            
