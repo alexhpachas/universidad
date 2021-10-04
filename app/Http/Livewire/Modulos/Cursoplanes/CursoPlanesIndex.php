@@ -3,7 +3,8 @@
 namespace App\Http\Livewire\Modulos\CursoPlanes;
 
 
-use App\Models\CursoPlane;
+
+use App\Models\CursoPlaneCiclo;
 use App\Models\Facultade;
 use App\Models\PlanEstudio;
 use App\Models\Programa;
@@ -35,7 +36,7 @@ class CursoPlanesIndex extends Component
         $facultades = Facultade::all();   
         $programas = Programa::where('facultade_id',$this->idfacultad)->get();
         $planEstudios = PlanEstudio::where('programa_id',$this->idprograma)->get();
-        $cursoPlanes = CursoPlane::where('plan_estudio_id',$this->idplanestudio)->latest('id')->paginate(10);                     
+        $cursoPlanes = CursoPlaneCiclo::where('plan_estudio_id',$this->idplanestudio)->latest('id')->paginate(10);                     
         return view('livewire.modulos.curso-planes.curso-planes-index',compact('facultades','programas','planEstudios','cursoPlanes'));
     }
 

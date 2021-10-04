@@ -74,4 +74,8 @@ class User extends Authenticatable
     public function cursoGrupoUsers(){
         return $this->belongsToMany(CursoGrupo::class);
     }
+
+    public function CursoPlanePeriodo(){
+        return $this->belongsTo(CursoPlanePeriodo::class);
+    }
 }

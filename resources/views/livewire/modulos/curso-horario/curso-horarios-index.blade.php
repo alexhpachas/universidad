@@ -1,6 +1,5 @@
 <div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {{-- ABRIRMOS UN CARD --}}
         <div class="card">
             <div class="card-header bg-blue-400 border text-white">
@@ -47,12 +46,12 @@
 
                         {{-- CUARTO SELECT -> PLAN DE ESTUDIO --}}
                         <div class="items-center mr-3">
-                            <x-jet-label value="Plan :" />
+                            <x-jet-label value="Seleccione Periodo :" />
 
-                            <select wire:model="idplanestudio" class="form-control">
+                            <select wire:model="idperiodo" class="form-control">
                                 <option value="" selected>===SELECCIONE===</option>
-                                @foreach ($planEstudios as $planEstudio)
-                                    <option value="{{ $planEstudio->id }}">{{ $planEstudio->codigo }}</option>
+                                @foreach ($periodos as $periodo)
+                                    <option value="{{ $periodo->id }}">{{ $periodo->nombre }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -65,21 +64,21 @@
                 </div>
             </div>
         </div>{{-- CIERRE DEL CARD --}}
-
         
-        @if (isset($idplanestudio))
+
+        @if (isset($idperiodo))
             <div wire:loading wire:target="mostrar"
                 class="text-center mb-4 bg-green-100 border border-red-400 text-green-700 px-4 py-3 rounded relative w-full">
                 <strong class="font-bold">!Procesando Datos!</strong>
                 <span class="block sm:inline">Por favor espere...!</span>
             </div>
         @endif
-
+          
         {{-- OTRO CARD PARA EL CONTENIDO --}}
-        @if (isset($idplanestudios))        
+        @if (isset($idperiodos))        
             <div class="card grid-cols-4">
                 <div class="card-header bg-blue-400 border text-white">
-                    <p class="ml-3 mt-1 mb-1"> GENERAR SECCIONES<a wire:click="$set('open',true)"
+                    <p class="ml-3 mt-1 mb-1"> GENERAR HORARIOS DE CURSOS<a wire:click="$set('open',true)"
                             class="btn btn-red btn-actions float-right"><i class="fas fa-plus"></i></a></p></span>
                             
                 </div>
@@ -89,8 +88,7 @@
                 <div class="card-body">
 
                     {{-- PROBANDO BUSCADOR --}}
-                    <span>Se insertaron {{$cursoPeriodo}} Registros</span>
-                    <span>Se insertaron {{$cursoSeccion}} Registros Pivot</span>
+                   
                  
                         <input type="text" wire:model="buscar" wire:keydown.enter="asignarPrimero()"  class="form-control" placeholder="Buscar Curso">
                         @if ($buscar!="")   
@@ -116,6 +114,7 @@
                         </div>
 
                     {{-- CERRANDO EL BUSCADOR --}}
+                    
 
                     <table class="min-w-full divide-y divide-gray-200 uppercase">
                         <thead>
@@ -127,37 +126,28 @@
                                 <th>Carrera</th>
                                 <th>Curso</th>
                                 <th>Ciclo</th>
+                                <th>Grupo</th>
                                 {{-- <th>Acciones</th> --}}
                             </tr>
                         </thead>
 
-                        <tbody>
-                            @foreach ($cursoPlanes as $cursoPlane)
-
-                                <tr
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b border-blue-200 hover:bg-gray-100">
-                                   {{--  <td class="py-2">
-                                            <label class="cursor-pointer">                                                
-                                                {!! Form::checkbox('cursoPlanes[]', $cursoPlane->id, null , ['class'=>'text-red-600']) !!}
-                                                {{$cursoPlane->curso->id}}
-                                            </label>
-                                        </td> --}}                                    
-                                    <td class="py-2">
-                                        <x-jet-checkbox wire:model.defer="seleccionesCurso" 
-                                            class="cursor-pointer"  value="{{ $cursoPlane->id }}" />
-                                        {{-- {{ $cursoPlane->id }} --}}
-                                    </td>
-                                    <td class="py-2">{{ $cursoPlane->planEstudio->codigo }}</td>
-                                    <td class="py-2">{{ $cursoPlane->curso->codigo }}</td>
-                                    <td class="py-2">{{ $cursoPlane->planEstudio->programa->abreviatura }}</td>
-                                    <td class="py-2">{{ $cursoPlane->curso->nombre }}</td>
-                                    <td class="py-2">{{ $cursoPlane->ciclo->nombre }}</td>
-
-                                    {{-- <td>@livewire('modulos.curso-grupos.curso-grupos-create', ['cursoPlane' => $cursoPlane,'datos'=>$datos], key($cursoPlane->id))</td> --}}
-
-                                    {{-- <td class="py-2">@livewire('modulos.curso-planes.curso-planes-update', ['cursoPlane'=>$cursoPlane], key(time().$cursoPlane->curso->id))</td> --}}
-                                </tr>
-                            @endforeach
+                        <tbody>                                                                                        
+                                @foreach ($cursoPlanePeriodoGrupos as $cursoPlanePeriodoGrupo)
+                                @if ($cursoPlanePeriodoGrupo->cursoPlaneCiclo->planEstudio->programa->id == $idprograma)
+                                    <tr
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b border-blue-200 hover:bg-gray-100">
+                                        <td></td>
+                                        <td class="py-2">{{ $cursoPlanePeriodoGrupo->cursoPlaneCiclo->planEstudio->codigo}}</td>
+                                        <td class="py-2">{{ $cursoPlanePeriodoGrupo->cursoPlaneCiclo->curso->codigo}}</td>
+                                        
+                                        <td class="py-2">{{ $cursoPlanePeriodoGrupo->cursoPlaneCiclo->planEstudio->programa->nombre}}</td>
+                                        <td class="py-2">{{ $cursoPlanePeriodoGrupo->cursoPlaneCiclo->curso->nombre}}</td>
+                                        <td class="py-2">{{ $cursoPlanePeriodoGrupo->cursoPlaneCiclo->ciclo->nombre}}</td>
+                                        <td class="py-2">{{ $cursoPlanePeriodoGrupo->grupo->nombre }}</td>
+                                        
+                                    </tr>
+                                @endif
+                                @endforeach                            
                         </tbody>
                     </table>
 
@@ -186,7 +176,7 @@
 
 
             {{-- MODAL  PARA CREAR GRUPO --}}
-            <x-jet-dialog-modal wire:model="open">
+            {{-- <x-jet-dialog-modal wire:model="open">
                 <x-slot name="title">
                     <div class="text-center border-gray-700 border-b-2">
                         CREAR GRUPO
@@ -262,18 +252,7 @@
                         <x-jet-input-error for="seleccionesSeccion" />
                     </div>
 
-                    {{-- @foreach ($seleccionesSeccion as $keys => $items)
-                        @if ($seleccionesSeccion[$keys] != null) 
-                            <p>
-                                <li>{{$seleccionesSeccion[$keys]}}{{$keys}}</li>                                   
-                            </p>
-                        @endif
-                        
-                    @endforeach --}}
-                    
-                    {{-- {{$periodo_id}}
-                    
-                    {{ auth()->user()->id }} --}}
+            
                 </x-slot>
 
                 <x-slot name="footer">
@@ -285,9 +264,8 @@
                         CANCELAR
                     </x-jet-secondary-button>
                 </x-slot>
-            </x-jet-dialog-modal>
+            </x-jet-dialog-modal> --}}
 
         @endif
-
     </div>
 </div>

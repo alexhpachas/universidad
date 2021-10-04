@@ -13,7 +13,7 @@ class CursoGrupo extends Model
     protected $guarded=[];
 
     public function cursoPlane(){
-        return $this->belongsToMany(CursoPlane::class);
+        return $this->belongsToMany(CursoPlaneCiclo::class);
     }
 
     public function periodos(){

@@ -21,7 +21,7 @@ class CreateHorariosTable extends Migration
             $table->enum('estado',[1,2])->default(1);
 
             $table->unsignedBigInteger('curso_grupo_id');
-            $table->foreign('curso_grupo_id')->references('id')->on('curso_grupos')->onUpdate('cascade');
+            /* $table->foreign('curso_grupo_id')->references('id')->on('curso_grupos')->onUpdate('cascade'); */
             $table->timestamps();
         });
     }

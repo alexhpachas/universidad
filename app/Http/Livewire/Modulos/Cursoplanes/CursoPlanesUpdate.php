@@ -4,7 +4,8 @@ namespace App\Http\Livewire\Modulos\CursoPlanes;
 
 use App\Models\Ciclo;
 use App\Models\Curso;
-use App\Models\CursoPlane;
+
+use App\Models\CursoPlaneCiclo;
 use Livewire\Component;
 
 class CursoPlanesUpdate extends Component
@@ -12,12 +13,12 @@ class CursoPlanesUpdate extends Component
     public $open=false;
     public $cursoPlane;
 
-    public function mount(CursoPlane $cursoPlane){
+    public function mount(CursoPlaneCiclo $cursoPlane){
         $this->cursoPlane = $cursoPlane;
     }
 
     protected $rules=[
-        'cursoPlane.curso_id'=>'required',
+        'cursoPlane.curso_id'=>'required|unique',
         'cursoPlane.plan_estudio_id'=>'required',
         'cursoPlane.ciclo_id'=>'required'
     ];

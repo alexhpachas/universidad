@@ -295,8 +295,13 @@ return [
                     'icon' => 'nav-icon fas fa-book-open',
                 ],
                 [
-                    'text' => 'Grupos de Cursos',
+                    'text' => 'Generar Cursos',
                     'route'  => 'unis.cursogrupos',
+                    'icon' => 'nav-icon fas fa-fw fa-lock',
+                ],
+                [
+                    'text' => 'Horarios de Cursos',
+                    'route'  => 'unis.cursohorarios',
                     'icon' => 'nav-icon fas fa-fw fa-lock',
                 ],
                 [

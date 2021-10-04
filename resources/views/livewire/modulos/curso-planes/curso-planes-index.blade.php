@@ -131,7 +131,7 @@
                                             </td>
                                             <td class="py-2">
                                                 <div class="d-inline">
-                                                @livewire('modulos.curso-planes.curso-planes-create', ['planEstudio' => $planEstudio], key(time().$planEstudio->id))                                                                                                                                     
+                                                @livewire('modulos.curso-planes.curso-planes-create', ['planEstudio' => $planEstudio,'programa' =>$planEstudio->programa->id], key(time().$planEstudio->id))                                                                                                                                     
                                                     
                                                 
                                                     <button wire:click="mostrar({{$planEstudio->id}})" class="btn btn-blue btn-actions"><i class="far fa-eye"></i></button>

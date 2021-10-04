@@ -11,7 +11,7 @@ class Curso extends Model
     use HasFactory;
 
     public function cursoPlane(){
-        return $this->hasMany(CursoPlane::class);
+        return $this->hasMany(CursoPlaneCiclo::class);
     }
 
     public function planEstudio(){

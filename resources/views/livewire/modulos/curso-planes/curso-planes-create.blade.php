@@ -10,8 +10,9 @@
     <x-jet-dialog-modal wire:model="open">
         <x-slot name="title">
             <div class="text-center border-gray-700 border-b-2">
-                AGREGAR CURSO
-                
+                AGREGAR CURSO                
+                {{$curso_id}}
+                {{-- {{$this->consulta->id}} --}}
             </div>
 
         </x-slot>
@@ -65,9 +66,9 @@
                     @foreach ($cursos as $curso)                        
                         <option selected value="{{$curso->id}}">{{$curso->nombre}}</option>
                     @endforeach
-                </select>
-                
+                </select>                                
             </div>
+            <x-jet-input-error for="curso_id"/>
 
             {{-- CICLO ID --}}
             <div class="mb-1">

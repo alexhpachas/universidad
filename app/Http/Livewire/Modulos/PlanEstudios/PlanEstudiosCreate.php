@@ -12,6 +12,7 @@ class PlanEstudiosCreate extends Component
     
     public $open = false;
     public $codigo,$programa_id=1,$probar;
+    public $programa;
 
     protected $rules=([
         'codigo'=>'required|max:10|unique:plan_estudios'

@@ -2,7 +2,8 @@
 
 namespace App\Http\Livewire\Modulos\CursoGrupos;
 
-use App\Models\CursoPlane;
+
+use App\Models\CursoPlaneCiclo;
 use App\Models\Grupo;
 use Livewire\Component;
 
@@ -15,7 +16,7 @@ class CursoGruposCreate extends Component
 
     protected $listeners=['render'];
 
-    public function mount(CursoPlane $cursoPlane){
+    public function mount(CursoPlaneCiclo $cursoPlane){
         $this->datos[] = $cursoPlane->id;
         /* $this->cursos = array_merge($cursoPlane,$this->cursos); */
     }

@@ -14,4 +14,8 @@ class Periodo extends Model
     public function cursoGrupos(){
         return $this->hasMany(CursoGrupo::class);
     }
+
+    public function CursoPlanePeriodo(){
+        return $this->belongsTo(CursoPlanePeriodo::class);
+    }
 }

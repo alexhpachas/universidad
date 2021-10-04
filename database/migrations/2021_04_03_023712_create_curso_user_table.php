@@ -18,7 +18,7 @@ class CreateCursoUserTable extends Migration
             $table->unsignedBigInteger('curso_grupo_id');
             
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
-            $table->foreign('curso_grupo_id')->references('id')->on('curso_grupos')->onUpdate('cascade');
+            /* $table->foreign('curso_grupo_id')->references('id')->on('curso_grupos')->onUpdate('cascade'); */
             $table->timestamps();
         });
     }

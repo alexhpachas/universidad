@@ -10,6 +10,8 @@ use App\Http\Livewire\Modulos\Ciclos\CiclosIndex;
 
 use App\Http\Livewire\Modulos\CursoGrupos\CursoGruposCreate;
 use App\Http\Livewire\Modulos\CursoGrupos\CursoGruposIndex;
+use App\Http\Livewire\Modulos\CursoHorario\CursoHorariosIndex;
+use App\Http\Livewire\Modulos\CursoHorario\HorariosIndex;
 use App\Http\Livewire\Modulos\Cursoplanes\CursoPlanesIndex;
 use App\Http\Livewire\Modulos\Cursoplanes\PlanCursosIndex;
 use App\Http\Livewire\Modulos\Cursos\CursosIndex;
@@ -50,6 +52,8 @@ Route::get('cursoplanes',[CursoPlanesIndex::class,'index'])->name('unis.cursopla
 Route::get('probando',[ProbandoIndex::class,'index'])->name('unis.probando');
 
 Route::get('cursogrupos',[CursoGruposIndex::class,'index'])->name('unis.cursogrupos');
+
+Route::get('cursohorarios',[CursoHorariosIndex::class,'index'])->name('unis.cursohorarios');
 
 
 

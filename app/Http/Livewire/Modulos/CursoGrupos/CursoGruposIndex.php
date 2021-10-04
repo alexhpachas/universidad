@@ -4,14 +4,16 @@ namespace App\Http\Livewire\Modulos\CursoGrupos;
 
 use App\Models\Curso;
 use App\Models\CursoGrupo;
-use App\Models\CursoPlane;
+
+use App\Models\CursoPlaneCiclo;
+use App\Models\CursoPlanePeriodo;
+use App\Models\CursoPlanePeriodoGrupo;
 use App\Models\Facultade;
 use App\Models\Grupo;
 use App\Models\Periodo;
 use App\Models\PlanEstudio;
 use App\Models\Programa;
-use App\Models\User;
-use Faker\Core\Number;
+
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -33,6 +35,9 @@ class CursoGruposIndex extends Component
 
     public $dato;
 
+    public $cursoPeriodo=0;
+    public $cursoSeccion=0;
+
     /* VARIABLES A INSERTAR */
 
     public $curso_plane_id,$periodo_id,$user_id='1';
@@ -43,6 +48,7 @@ class CursoGruposIndex extends Component
     protected $rules = [        
         
         'periodo_id'=>'required',
+        
         'user_id'=>'required',
         'seleccionesSeccion'=>'required',
         'seleccionesCurso'=>'required'
@@ -64,7 +70,7 @@ class CursoGruposIndex extends Component
         $facultades = Facultade::all();
         $programas = Programa::where('facultade_id', $this->idfacultad)->get();
         $planEstudios = PlanEstudio::where('programa_id', $this->idprograma)->get();
-        $cursoPlanes  = CursoPlane::where('plan_estudio_id', $this->idplanestudios)->get();
+        $cursoPlanes  = CursoPlaneCiclo::where('plan_estudio_id', $this->idplanestudios)->get();
         $grupos = Grupo::all();
         $periodos = Periodo::all();
         $this->cursos=Curso::where('nombre','like','%'.$this->buscar.'%')->take(3)->get();
@@ -77,18 +83,36 @@ class CursoGruposIndex extends Component
     public function guardar(){        
         
         $this->validate();
-        $grupos = CursoGrupo::create([            
-            'periodo_id'=>$this->periodo_id,
-            'user_id'=>auth()->user()->id
-        ]);
+        /* $total = Str::length($this->seleccionesCurso); */
         
-        if ($this->seleccionesCurso) {
-            $grupos->cursoPlane()->attach($this->seleccionesCurso);    
-            
-        }
+        foreach ($this->seleccionesCurso as $seleccion => $value) {            
+            $verificar = CursoPlanePeriodo::where('curso_plane_ciclo_id',$value)->where('periodo_id',$this->periodo_id)->first();
+            /* $verificar2 = CursoPlanePeriodo::where('periodo_id',$this->periodo_id)->first(); */
+            if (!$verificar) {                            
+                $grupos = CursoPlanePeriodo::create([            
+                    'periodo_id'=>$this->periodo_id,
+                    'curso_plane_ciclo_id' => $value,
+                    'user_id'=>auth()->user()->id
 
-        if ($this->seleccionesSeccion) {
-            $grupos->grupos()->attach($this->seleccionesSeccion);    
+                ]);
+                if ($this->seleccionesSeccion) {
+                    $grupos->grupos()->attach($this->seleccionesSeccion);    
+                    $this->cursoSeccion++;
+                }
+
+                $this->cursoPeriodo++;
+            }
+            //A B
+            foreach ($this->seleccionesSeccion as $seccion => $values) {
+                $verificar2 = CursoPlanePeriodoGrupo::where('grupo_id',$values)->where('curso_plane_periodo_id',$value)->first();
+
+                if (!$verificar2) {
+                    $verificar->grupos()->attach($values);    
+                    $this->cursoSeccion++;
+                }
+                
+            }
+            
         }
 
         $this->reset('open','user_id','periodo_id','seleccionesCurso','seleccionesSeccion');

@@ -12,7 +12,7 @@ class PlanEstudio extends Model
     protected $guarded=[];
 
     public function cursoPlane(){
-        return $this->hasMany(CursoPlane::class);
+        return $this->hasMany(CursoPlaneCiclo::class);
     }
 
     public function programa(){

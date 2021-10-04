@@ -18,7 +18,7 @@ class CreatePreRequisitosTable extends Migration
 
             $table->unsignedBigInteger('curso_plane_id');
 
-            $table->foreign('curso_plane_id')->references('id')->on('curso_planes')->onUpdate('cascade');
+            $table->foreign('curso_plane_id')->references('id')->on('curso_plane_ciclos')->onUpdate('cascade');
             $table->timestamps();
         });
     }

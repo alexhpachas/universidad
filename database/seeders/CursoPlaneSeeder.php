@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\CursoPlane;
+
+use App\Models\CursoPlaneCiclo;
 use Illuminate\Database\Seeder;
 
 class CursoPlaneSeeder extends Seeder
@@ -16,37 +17,37 @@ class CursoPlaneSeeder extends Seeder
     {
         //DATOS PARA EL PRIMER CICLO
 
-        CursoPlane::create([
+        CursoPlaneCiclo::create([
             'plan_estudio_id'=>1,
             'ciclo_id'=>1,
             'curso_id'=>1        
         ]);
 
-        CursoPlane::create([
+        CursoPlaneCiclo::create([
             'plan_estudio_id'=>1,
             'ciclo_id'=>1,
             'curso_id'=>2        
         ]);
 
-        CursoPlane::create([
+        CursoPlaneCiclo::create([
             'plan_estudio_id'=>1,
             'ciclo_id'=>1,
             'curso_id'=>3        
         ]);
 
-        CursoPlane::create([
+        CursoPlaneCiclo::create([
             'plan_estudio_id'=>1,
             'ciclo_id'=>1,
             'curso_id'=>4        
         ]);
 
-        CursoPlane::create([
+        CursoPlaneCiclo::create([
             'plan_estudio_id'=>1,
             'ciclo_id'=>1,
             'curso_id'=>5        
         ]);
 
-        CursoPlane::create([
+        CursoPlaneCiclo::create([
             'plan_estudio_id'=>1,
             'ciclo_id'=>1,
             'curso_id'=>6        
@@ -54,37 +55,37 @@ class CursoPlaneSeeder extends Seeder
 
         //DATOS PARA EL SEGUNDO CICLO
 
-        CursoPlane::create([
+        CursoPlaneCiclo::create([
             'plan_estudio_id'=>1,
             'ciclo_id'=>2,
             'curso_id'=>7        
         ]);
 
-        CursoPlane::create([
+        CursoPlaneCiclo::create([
             'plan_estudio_id'=>1,
             'ciclo_id'=>2,
             'curso_id'=>8       
         ]);
 
-        CursoPlane::create([
+        CursoPlaneCiclo::create([
             'plan_estudio_id'=>1,
             'ciclo_id'=>2,
             'curso_id'=>9       
         ]);
 
-        CursoPlane::create([
+        CursoPlaneCiclo::create([
             'plan_estudio_id'=>1,
             'ciclo_id'=>2,
             'curso_id'=>10        
         ]);
 
-        CursoPlane::create([
+        CursoPlaneCiclo::create([
             'plan_estudio_id'=>1,
             'ciclo_id'=>2,
             'curso_id'=>11        
         ]);
 
-        CursoPlane::create([
+        CursoPlaneCiclo::create([
             'plan_estudio_id'=>1,
             'ciclo_id'=>2,
             'curso_id'=>12        
